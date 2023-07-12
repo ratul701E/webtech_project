@@ -38,7 +38,7 @@ if(isset($_GET['err'])){
                                 <td>
                                     <label for="professional">
                                         <input type="checkbox" id="professional" name="role" value="Professional">
-                                        <img src="professional.jpg" alt="Professional Image" width="15">
+                                        <img src="../vendor/professional.jpg" alt="Professional Image" width="15">
                                         Professional
                                     </label>
                                 </td>
@@ -78,6 +78,7 @@ if(isset($_GET['err'])){
                     <td>Gender:</td>
                     <td>
                         <select id="gender" name="gender" required>
+                            <option value="">-- Select Gender  --</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                             <option value="other">Other</option>
@@ -87,12 +88,17 @@ if(isset($_GET['err'])){
                 <tr>
                     <td>Country/Region:</td>
                     <td>
-                        <select name="country" id="">
+                    <select id="country" name="country" required>
+                            <option value="">-- Select a country --</option>
+                            <option value="USA">United States of America</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="Canada">Canada</option>
                             <option value="Bangladesh">Bangladesh</option>
                             <option value="India">India</option> 
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Belarus">Belarus</option>
                             <option value="China">China</option>
+                           
                         </select>
                     </td>
                 </tr>
