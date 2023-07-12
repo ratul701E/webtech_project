@@ -38,14 +38,14 @@ if(isset($_GET['err'])){
                                 <td>
                                     <label for="professional">
                                         <input type="checkbox" id="professional" name="role" value="Professional">
-                                        <img src="../vendor/professional.jpg" alt="Professional Image" width="15">
+                                        <img src="../vendor/icons/professional.jpg" alt="Professional Image" width="15">
                                         Professional
                                     </label>
                                 </td>
                                 <td>
                                     <label for="protege">
                                         <input type="checkbox" id="Aspirant" name="role" value="Aspirant">
-                                        <img src="protege.avif" alt="AspirantImage" width="17">
+                                        <img src="../vendor/icons/protege.avif" alt="AspirantImage" width="17">
                                         Aspirant
                                     </label>
                                 </td>
