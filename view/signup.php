@@ -31,12 +31,26 @@ if(isset($_GET['err'])){
 
                 
                 <tr>
-                    <td>Signup-As:</td>
+                    <td><label for="signup-as">Signup As:</label></td>
                     <td>
-                        <select id="status" name="role" required>
-                            <option value="Professional">Professional</option>
-                            <option value="Aspirant">Aspirant</option>
-                        </select>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label for="professional">
+                                        <input type="checkbox" id="professional" name="role" value="Professional">
+                                        <img src="professional.jpg" alt="Professional Image" width="15">
+                                        Professional
+                                    </label>
+                                </td>
+                                <td>
+                                    <label for="protege">
+                                        <input type="checkbox" id="Aspirant" name="role" value="Aspirant">
+                                        <img src="protege.avif" alt="AspirantImage" width="17">
+                                        Aspirant
+                                    </label>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
                 <tr>
