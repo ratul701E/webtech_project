@@ -1,25 +1,91 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>About</title>
-</head>
-<body>
-  <h1>About Us</h1>
+<div class="about-section">
+  <h1 align="center">About Us Page</h1>
+  <p align="center">Some text about who we are and what we do.</p>
+  <p align="center">Resize the browser window to see that this page is responsive, by the way.</p>
 
-  <h2>Project Summary</h2>
-  <p>The objective of our project is to create a learning website that connects professionals who have achieved success in their respective fields with individuals who aspire to enter those professions. The website serves as a platform for professionals to share their experiences, insights, and strategies that led to their success. It also provides guidance and resources to help aspiring individuals develop the necessary skills and knowledge to excel in their chosen professions.</p>
+  <h2 align="center">Project Summary</h2>
+  <p align="center">Create a learning website that connects professionals with aspiring individuals.</p>
+  <p align="center">Provide a platform for professionals to share their experiences, insights, and strategies.</p>
+  <p align="center">Offer guidance and resources to help aspiring individuals develop skills and excel in their professions.</p>
+</div>
 
-  <h2>Key Features</h2>
-  <ul>
-    <li>User Profiles: Professionals and aspiring individuals can create profiles and share information about their background and expertise.</li>
-    <li>Professional Journeys: Professionals can share their career journeys, including challenges faced, milestones achieved, and lessons learned.</li>
-    <li>Path Setting: Professionals can create customized paths outlining the steps and resources needed to excel in a specific profession.</li>
-    <li>Communication and Networking: Users can communicate, seek advice, and ask questions through messaging, forums, and networking features.</li>
-    <li>Progress Tracking: Aspiring individuals can track their progress within chosen paths and receive recommendations.</li>
-    <li>Community Engagement: The platform fosters a supportive and collaborative community for interaction and idea sharing.</li>
-  </ul>
-
-  <p>Conclusion:</p>
-  <p>The proposed learning website aims to bridge the gap between professionals and aspiring individuals, providing valuable insights, guidance, and resources to help individuals succeed in their chosen professions. By leveraging the expertise and experiences of professionals, the website aims to empower users with the knowledge and skills required for professional growth and achievement.</p>
-</body>
-</html>
+<h2 style="text-align:center">Our Team</h2>
+<table style="width:100%;">
+  <tr>
+    <td align="center">
+      <div class="card">
+        <img src="1.jpg" width="90" height="80">
+        <div class="container">
+          <h2>Asraful Alam</h2>
+          <p class="title">CEO & Founder</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>
+            <a href="mailto:asrafulalam@gmail.com">
+              <img src="email.png" alt="Email Icon" width="10" height="10">
+              asrafulalam@gmail.com
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/ratulratul88">
+              <img src="fb.svg.png" alt="Facebook Icon" width="10" height="10">
+              Facebook
+            </a>
+          </p>
+          <p>
+            <a href="support.php" class="button">Contact</a>
+          </p>
+        </div>
+      </div>
+    </td>
+    <td align="center">
+      <div class="card">
+        <img src="2.jpg" width="90" height="80">
+        <div class="container">
+          <h2>Asiya Akter</h2>
+          <p class="title">Designer</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>
+            <a href="mailto:asiyaakter@example.com">
+              <img src="email.png" alt="Email Icon" width="10" height="10">
+              asiyaakter@example.com
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/asiya.akter.9674">
+              <img src="fb.svg.png" alt="Facebook Icon" width="10" height="10">
+              Facebook
+            </a>
+          </p>
+          <p>
+            <a href="support.php" class="button">Contact</a>
+          </p>
+        </div>
+      </div>
+    </td>
+    <td align="center">
+      <div class="card">
+        <img src="3.jpg" width="90" height="80">
+        <div class="container">
+          <h2>Shafwan Haque</h2>
+          <p class="title">Director</p>
+          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+          <p>
+            <a href="mailto:ShafwanHaque@gmail.com">
+              <img src="email.png" alt="Email Icon" width="10" height="10">
+              ShafwanHaque@gmail.com
+            </a>
+          </p>
+          <p>
+            <a href="https://www.facebook.com/Shafwan.haq">
+              <img src="fb.svg.png" alt="Facebook Icon" width="10" height="10">
+              Facebook
+            </a>
+          </p>
+          <p>
+            <a href="support.php" class="button">Contact</a>
+          </p>
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>
