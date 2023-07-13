@@ -28,7 +28,7 @@
 
     }
 
-    function getAllDomains($username){
+    function getAllDomains($username = ''){
         $con = dbConnection();
         $sql = "SELECT * from domains where domain_id NOT IN (SELECT domain_id from user_domains where username='{$username}');";
         
@@ -38,6 +38,16 @@
                 array_push($domains, $row);
             }
             return $domains;
+        }
+        return false;
+    }
+
+    function getDomainName($id){
+        $con = dbConnection();
+        $sql = "SELECT name from domains where domain_id='{$id}';";
+        
+        if($result = mysqli_query($con, $sql)){
+            return $row=mysqli_fetch_assoc($result)['name'];
         }
         return false;
     }

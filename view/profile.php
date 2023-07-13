@@ -45,7 +45,7 @@
                                         <tr><td><a href="">Followers</a><hr></td></tr>
                                         <tr><td><a href="">Communication</a><hr></td></tr>
                                         <tr><td><a href="">My Paths</a><hr></td></tr>
-                                        <tr><td><a href="">Discussion</a><hr></td></tr>
+                                        <tr><td><a href="discussion.php">Discussion</a><hr></td></tr>
 
                                     <?php
                                 }
@@ -53,7 +53,7 @@
                                     ?>
                                         <tr><td><a href="">Following</a><hr></td></tr>
                                         <tr><td><a href="">Communication</a><hr></td></tr>
-                                        <tr><td><a href="">Discussion</a><hr></td></tr>
+                                        <tr><td><a href="discussion.php">Discussion</a><hr></td></tr>
 
                                     <?php
                                 }
