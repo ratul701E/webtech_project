@@ -9,6 +9,7 @@
                                         '',
                                         '{$author_username}',
                                         CURRENT_TIMESTAMP,
+                                        CURRENT_TIMESTAMP,
                                         '{$domain_id}',
                                         '{$title}',
                                         '{$body}'
@@ -56,5 +57,21 @@
         return false;
     }
 
+    function updatePost($id, $domain_id, $title, $body){
+        $con = dbConnection();
+        $sql = "UPDATE discussion_posts SET 
+                                last_edited=CURRENT_TIMESTAMP,
+                                title='{$title}',
+                                domain='{$domain_id}',
+                                body='{$body}'
+                                where post_id='{$id}';";
+
+        if(mysqli_query($con, $sql)){
+            return true;
+        }else {
+            mysqli_error($con);
+            return false;
+        }
+    }
 
 ?>
