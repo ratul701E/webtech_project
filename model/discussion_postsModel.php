@@ -33,9 +33,37 @@
 
     }
 
-    function getAllPosts($username = ''){
+    function getAllPosts(){
         $con = dbConnection();
         $sql = "SELECT * from discussion_posts;";
+        
+        if($result = mysqli_query($con, $sql)){
+            $posts = [];
+            while($row=mysqli_fetch_assoc($result)){
+                array_push($posts, $row);
+            }
+            return $posts;
+        }
+        return false;
+    }
+
+    function getUserAllPosts($username){
+        $con = dbConnection();
+        $sql = "SELECT * from discussion_posts where author='{$username}';";
+        
+        if($result = mysqli_query($con, $sql)){
+            $posts = [];
+            while($row=mysqli_fetch_assoc($result)){
+                array_push($posts, $row);
+            }
+            return $posts;
+        }
+        return false;
+    }
+
+    function getCommentedAllPosts($username){
+        $con = dbConnection();
+        $sql = "SELECT * from discussion_posts where post_id in (SELECT post_id from discussion_comments where username='{$username}');";
         
         if($result = mysqli_query($con, $sql)){
             $posts = [];

@@ -25,7 +25,7 @@
 </head>
 <body>
   <fieldset>
-    <legend>Edit Post</legend>
+    <legend align="center"><h2>Edit Post</h2></legend>
     <form action="../controller/edit_post_process.php" method="post">
     <input type="hidden" name="post_id" value="<?=$post_id?>">
 

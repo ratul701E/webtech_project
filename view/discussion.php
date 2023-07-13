@@ -15,7 +15,7 @@
         $err_msg = $_GET['err'];
         switch($err_msg){
             case 'failed':{$msg = "Failed to post."; break;}
-            case 'deleted':{$msg = "Your last post was deleted Successfully."; break;}
+            case 'deleted':{$msg = "Your post was deleted Successfully."; break;}
         }
             
     }
@@ -25,7 +25,7 @@
         $s_msg = $_GET['success'];
         switch($s_msg){
             case 'posted':{$success_msg = "Posted."; break;}            
-            case 'updated':{$success_msg = "Your last post was updated Successfully."; break;}            
+            case 'updated':{$success_msg = "Your post was updated Successfully."; break;}            
         }   
     }
 ?>
@@ -69,7 +69,7 @@
                     <br>
                     <br>
 
-                    <input type="submit" name="post" value="Post">
+                    <input type="submit" name="post" value="Post" <?=$post_com_previllage?>>
                     <br>
                     <?php if(strlen($msg) > 0){ ?>
                         <h3 align="center"><font color="red"><?=$msg?></font></h3>
@@ -83,22 +83,45 @@
             </fieldset>
 
             <br>
-
-            
+                
+            <?php
+                if(isset($_SESSION['logged_in'])){
+                    ?>
+                        <p align="center">
+                            <b>Filter</b> &nbsp;
+                            <select name="sortby" id="" onchange="location = this.value">
+                            <option value="discussion.php" <?php if(!isset($_GET['view'])) echo 'selected' ?>>All Posts</option>
+                            <option value="discussion.php?view=my_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'my_posts') echo 'selected' ?>>My Posts</option>
+                            <option value="discussion.php?view=commented_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'commented_posts') echo 'selected' ?>>Commented Posts</option>
+                            </select>
+                        </p>
+                    <?php
+                }
+                
+            ?>
 
             <?php
                 // fetching posts
-                $posts = getAllPosts();
+                if(isset($_SESSION['logged_in']) and isset($_GET['view'])){
+                    if($_GET['view'] == 'my_posts'){
+                        $posts = getUserAllPosts($user['username']);
+                    }
+                    if($_GET['view'] == 'commented_posts'){
+                        $posts = getCommentedAllPosts($user['username']);
+                    }
+                }
+                else $posts = getAllPosts();
+                
 
                 foreach($posts as $post){
                     ?>
                         <fieldset>
 
-                            <legend align="center"><font size="5">Posted by <a href="profile.php?username=<?=$post['author']?>"> <?php if($post['author'] == $user['username']) echo 'you'; else echo '@'.$post['author']; ?> </a> &#x2022; <?=date_format(new DateTime($post['date']), "D H:i A")?> </font></legend>
+                            <legend align="center"><font size="5">Posted by <a href="profile.php?username=<?=$post['author']?>"> <?php if(isset($_SESSION['logged_in']) and $post['author'] == $user['username']) echo 'you'; else echo '@'.$post['author']; ?> </a> &#x2022; <?=date_format(new DateTime($post['date']), "D H:i A")?> </font></legend>
                             
 
                             <?php
-                                if($user['username'] == $post['author']){
+                                if(isset($_SESSION['logged_in']) and $user['username'] == $post['author']){
                                     ?>
                                         <form action="edit_post.php" method="post">
                                             <p align="right"><input type="submit" name="edit" value="Edit" ></p>
@@ -132,7 +155,7 @@
                                     ?>
                                         <table>
                                             <tr>
-                                                <td><b><a href="profile.php?username=<?=$comment['username']?>"> <?php if($comment['username'] == $user['username']) echo 'me'; else echo '@'.$comment['username']; ?> </a></b></td>
+                                                <td><b><a href="profile.php?username=<?=$comment['username']?>"> <?php if(isset($_SESSION['logged_in']) and $comment['username'] == $user['username']) echo 'me'; else echo '@'.$comment['username']; ?> </a></b></td>
                                                 <td> &nbsp;<?=$comment['comment']?></td>
                                                 <td> • <i><?=date_format(new DateTime($comment['date']), "D H:i a")?></i></td>
                                             </tr`>

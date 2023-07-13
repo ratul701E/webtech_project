@@ -3,6 +3,11 @@
     require_once('../model/discussion_commentsModel.php');
     require_once('../model/discussion_postsModel.php');
 
+    if(!isset($_SESSION['logged_in'])){
+        header('location: ../view/signin.php');
+        exit();
+    }
+
     $user = $_SESSION['user'];
 
     if(isset($_POST['comment'])){
