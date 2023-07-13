@@ -8,6 +8,7 @@
     $user = $_SESSION['user'];
     $username = $_GET['username'];
 
+
     if($username != $_SESSION['username']) {
         header('location: profile_view.php');
         exit();
@@ -17,11 +18,6 @@
         header('location: unvarified_professional.php');
         exit();
     }
-
-    
-
-    
-
 ?>
 
 
