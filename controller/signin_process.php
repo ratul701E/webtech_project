@@ -28,14 +28,8 @@
             setcookie('username', $username, time()+10000000000, '/');
          }
 
-        if($user['status'] == 'valid'){
-            header('location: ../view/profile.php?username='.$user['username']);
-            exit();
-        }
-        else if($user['status'] == 'invalid'){
-            header('location: ../view/unvarified_professional.php');
-            exit();
-        }
+        header('location: ../view/profile.php?username='.$username);
+        exit();
      }
      else header('location: ../view/signin.php?err=mismatch');
 

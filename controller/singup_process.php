@@ -42,7 +42,7 @@
     $status = addUser($username, $first_name, $last_name, $email, $phone, $gender, $country, $address, $password, $role, $profile, $validity);
 
     if($status){
-        header('location: ../view/signin.php');
+        header('location: ../view/signin.php?success=created');
     }
     else{
         header('location: ../view/signup.php?unknown=true');

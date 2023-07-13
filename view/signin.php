@@ -24,6 +24,7 @@
         $s_msg = $_GET['success'];
         switch($s_msg){
             case 'changed':{$success_msg = "Password Changed successfully."; break;}
+            case 'created':{$success_msg = "Account successfully created. Please sign in."; break;}
             
         }   
     }

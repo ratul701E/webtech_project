@@ -109,6 +109,86 @@
                         </tr>
                     </table>
 
+                    <?php
+                        if($user['role'] == 'Professional' or $user['role'] == 'Aspirant'){
+
+                            ?>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <?php if($user['role'] == 'Professional') echo '<h3>Professional Domains</h3>' ; 
+                                                else echo '<h3>My Domains</h3>';
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    
+                                    <?php
+                                        require_once('../model/user_domainsModel.php');
+                                        $domains = getUserDomains($user['username']);
+                                        if(sizeof($domains) == 0){
+                                            ?>
+                                                <tr>
+                                                    <td><i><b>No domains yet</b></i></td>
+                                                </tr>
+                                            <?php
+                                        }
+                                        else{
+                                            foreach($domains as $domain){
+
+                                                ?>
+                                                    <form action="../controller/user_domain_manage.php" method="post">
+                                                        <tr>
+                                                            <td><?=$domain['name']?></td>
+                                                            <td><input type="submit" name="remove_domain" value="Remove"></td>
+                                                            <td><input type="hidden" name="domain_id" value="<?=$domain['domain_id']?>"></td>
+                                                        </tr>
+                                                    </form>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                    <tr>
+                                        <td><h3>Add New Domain </h3></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <?php
+                                                require_once('../model/domainsModel.php');
+                                                $domains = getAllDomains($user['username']);
+                                                ?>
+                                                    <form action="../controller/user_domain_manage.php" method="post">
+                                                        <select name="domain_id" id="" required>
+                                                        <option value="">-- Select a domain --</option>
+                                                            <?php
+                                                                foreach($domains as $domain){
+                                                                    ?>
+                                                                        <option value="<?=$domain['domain_id']?>"><?=$domain['name']?></option>
+                                                                    <?php
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                        <input type="submit" name="add_new_domain" value="Add">
+                                                        <br>
+                                                        <?php if($user['role'] == 'Professional'){
+                                                                ?>
+                                                                    <i><font color="red">it will suspend you account until admin verify</font></i>
+                                                                    <br>
+                                                                    <i><font color="red" size=2>(Please upload nessery document so that admin can approve)</font></i>
+                                                                <?php
+                                                            }
+                                                        ?>
+                                                    </form>
+                                                <?php
+
+                                            ?>
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            <?php
+
+                        }
+                    ?>
 
 
                 </td>
