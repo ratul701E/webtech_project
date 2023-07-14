@@ -9,16 +9,21 @@
     $user = $_SESSION['user'];
     $username = $_GET['username'];
 
+    if($user['status'] == 'invalid' ){
+        header('location: unvarified_professional.php');
+        exit();
+    }
+    else if($user['status'] == 'unvarified'){
+        header('location: unvarified_user.php');
+        exit();
+    }
+
 
     if($username != $_SESSION['username']) {
         header('location: profile_view.php');
         exit();
     }
 
-    if($user['status'] == 'invalid'){
-        header('location: unvarified_professional.php');
-        exit();
-    }
 ?>
 
 

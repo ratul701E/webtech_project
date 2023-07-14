@@ -3,8 +3,6 @@
     require_once('../model/userModel.php');
     require_once('mail_sender.php');
 
-    if(!isset($_SESSION['logged_in']) ) header('location: signin.php');
-
     if(isset($_POST['email'])){
         $email = $_POST['email'];
         $user = getUser($email);

@@ -15,8 +15,7 @@
     $address = $_POST['address'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    if($role == 'Aspirant') $validity = 'valid';
-    else $validity = 'invalid';
+    $validity = 'unvarified';
 
 
     if(isExistUser($username, $email)) {header('location: ../view/signup.php?err=userExist'); exit();}

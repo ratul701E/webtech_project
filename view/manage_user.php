@@ -138,6 +138,7 @@
                                     else if($temp_user['status'] == 'invalid') echo '<font color = "orange">Invalid</font>';
                                     else if($temp_user['status'] == 'valid') echo '<font color = "green">Valid</font>';
                                     else if($temp_user['status'] == 'banned') echo '<font color = "#ff8080">Banned</font>';
+                                    else if($temp_user['status'] == 'unvarified') echo '<font color = "#ae7ef1">Unvarified</font>';
                                 ?>
                             </td>
                             

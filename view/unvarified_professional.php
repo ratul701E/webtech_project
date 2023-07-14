@@ -1,4 +1,12 @@
 <?php
+     session_start();
+
+     if(!isset($_SESSION['logged_in']) ) {
+         header('location: signin.php');
+         exit();
+     }
+     
+
     $msg = '';
     if(isset($_GET['err'])){
         $err_msg = $_GET['err'];
@@ -17,7 +25,6 @@
         }   
     }
 
-    session_start();
     $user = $_SESSION['user'];
 
 
