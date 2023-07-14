@@ -96,7 +96,11 @@
                     if($temp_user['role'] == 'SuperAdmin') continue;
                     ?> 
                         <tr>
-                            <td><?=$temp_user['username']?></td>
+                            <td>
+                                <img src="../vendor/profiles/<?=$temp_user['profile_location']?>" alt="" width="30">
+                                <br>
+                                <?=$temp_user['username']?> &nbsp;
+                            </td>
                             <td><?=$temp_user['email']?></td>
                             <td><?=$temp_user['role']?></td>
                             <td>

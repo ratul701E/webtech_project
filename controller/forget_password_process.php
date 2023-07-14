@@ -6,15 +6,21 @@
 
     $password = $_POST['new_password'];
     $cpassword = $_POST['confirm_password'];
+    $otp = $_POST['otp'];
+
+    if($otp != $_SESSION['forget_password_otp']){
+        {header('location: ../view/forget_password.php?err=otpMismatch'); exit();}
+    }
 
     if(strlen($password) < 8) {header('location: ../view/forget_password.php?err=shortPassword'); exit();}
     if($password != $cpassword) {header('location: ../view/forget_password.php?err=passwordMismatch'); exit();}
 
-    $user = getUser('ratul@gmail.com'/*$_SESSION['forget_password_email']*/);
+    $user = getUser($_SESSION['forget_password_email']);
+    
 
 
     $status = updateUser(
-        'ratul@gmail.com'/*$_SESSION['forget_password_email']*/, // set by get verification code
+        $_SESSION['forget_password_email'],
         $user['username'],
         $user['first_name'],
         $user['last_name'],
@@ -31,6 +37,8 @@
     );
 
     if($status){
+        unset($_SESSION['forget_password_email']);
+        unset($_SESSION['forget_password_otp']);
         header('location: ../view/signin.php?success=changed'); 
         exit();
     }
