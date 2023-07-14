@@ -9,20 +9,20 @@
             <td>
                 <table>
                     <tr>
-                        <td align="left">
+                        <td>
                             <img src="logo.jpg" alt="Logo" height="20px" width="30px">
                         </td>
                     </tr>
                 </table>
             </td>
             <td>
-                <table>
+                <table align="center">
                     <tr>
-                        <td align="center">
+                        <td>
                             <form>
                                 <input type="text" placeholder="Search...">
                                 <button type="submit">
-                                    <img src="search.png" alt="Search" height="20px" width="20px">
+                                    <img src="search.png" alt="Search" height="10px" width="10px">
                                 </button>
                             </form>
                         </td>
@@ -30,18 +30,16 @@
                 </table>
             </td>
             <td >
-            <table class="right-align">
-    <tr>
-      <td>
-        <a href="#">
-          <img src="profile.png" alt="Profile" height="20px" width="30px">
-        </a>
-        <a href="sign.php">
-          <img src="logout.png" alt="Logout" height="20px" width="30px">
-        </a>
-      </td>
-    </tr>
-  </table>
+            <table align="center">
+                          <a href="#">
+                                <img src="profile.png" alt="Profile" height="20px" width="30px">
+                            </a>
+                            <a href="signin.php">
+                                <img src="logout.png" alt="Logout" height="20px" width="30px">
+                            </a>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>
@@ -63,11 +61,9 @@
     <footer>
         <p>&copy; 2023 Your Website. All rights reserved. | Designed by Your Name</p>
         <div>
-            <a href="https://www.facebook.com/yourpage" target="_blank">Facebook</a> |
-            <a href="mailto:info@gmail.com">Email</a>
+            <a href="https://www.facebook.com/yourpage"align="center" target="_blank">Facebook</a> |
+            <a href="mailto:info@gmail.com"align="center">Email</a>
         </div>
     </footer>
 </body>
 </html>
-
-                          
