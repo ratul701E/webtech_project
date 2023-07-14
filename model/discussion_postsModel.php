@@ -33,9 +33,9 @@
 
     }
 
-    function getAllPosts(){
+    function getAllPosts($like=''){
         $con = dbConnection();
-        $sql = "SELECT * from discussion_posts;";
+        $sql = "SELECT * from discussion_posts where author like '%{$like}%' or post_id like '%{$like}%' or date like '%{$like}%';";
         
         if($result = mysqli_query($con, $sql)){
             $posts = [];

@@ -89,7 +89,7 @@
                     ?>
                         <p align="center">
                             <b>Filter</b> &nbsp;
-                            <select name="sortby" id="" onchange="location = this.value">
+                            <select name="filter" id="" onchange="location = this.value">
                             <option value="discussion.php" <?php if(!isset($_GET['view'])) echo 'selected' ?>>All Posts</option>
                             <option value="discussion.php?view=my_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'my_posts') echo 'selected' ?>>My Posts</option>
                             <option value="discussion.php?view=commented_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'commented_posts') echo 'selected' ?>>Commented Posts</option>
@@ -97,7 +97,6 @@
                         </p>
                     <?php
                 }
-                
             ?>
 
             <?php

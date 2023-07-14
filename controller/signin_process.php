@@ -18,6 +18,10 @@
             header('location: ../view/signin.php?err=falseUser');
             exit();
          }
+         else if($user['status'] == 'banned'){
+            header('location: ../view/signin.php?err=bannedUser');
+            exit();
+         }
 
          $_SESSION['logged_in'] = true;
          $_SESSION['username'] = $user['username'];

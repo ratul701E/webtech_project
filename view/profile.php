@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     if(!isset($_SESSION['logged_in']) ) {
         header('location: signin.php');
         exit();
@@ -58,14 +59,9 @@
                                     <?php
                                 }
                                 else if($user['role'] == 'Admin' || $user['role'] == 'SuperAdmin'){
-                                    if($user['role'] == 'SuperAdmin'){
-                                        ?>
-                                            <tr><td><a href="">Manage Admins</a><hr></td></tr>
-                                        <?php
-                                    }
                                     ?>
-                                        <tr><td><a href="">Manage Users [ Aspirant, Professional ]</a><hr></td></tr>
-                                        <tr><td><a href="">Manage Discussion Post</a><hr></td></tr>
+                                        <tr><td><a href="manage_user.php">Manage Users</a><hr></td></tr>
+                                        <tr><td><a href="manage_discussionPosts.php">Manage Discussion Post</a><hr></td></tr>
                                         <tr><td><a href="verify.php">Professional List [ For Verify]</a><hr></td></tr>
 
                                     <?php

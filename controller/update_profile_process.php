@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['logged_in'])) {header('location: ../view/signin.php');}
     
     if(!isset($_POST['update'])) {header('location: ../view/update_profile.php');}
     require_once('../model/userModel.php');

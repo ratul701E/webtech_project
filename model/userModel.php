@@ -106,4 +106,19 @@
         return false;
     }
 
+
+    function getAllUsers($email_or_username = '', $like = ''){
+        $con = dbConnection();
+        $sql = "SELECT * from user where (username like '%{$email_or_username}%' or email like '%{$email_or_username}%') and role like '%{$like}%';";
+        
+        if($result = mysqli_query($con, $sql)){
+            $users = array();
+            while($user = mysqli_fetch_assoc($result)){
+                array_push($users, $user);
+            }
+            return $users;
+        }
+        return false;
+    }
+
 ?>

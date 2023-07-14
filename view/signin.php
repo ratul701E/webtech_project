@@ -15,6 +15,7 @@
         switch($err_msg){
             case 'mismatch':{$msg = "Wrong username or password."; break;}
             case 'falseUser':{$msg = "Your account has been deleted. Support"; break;}
+            case 'bannedUser':{$msg = "Your account is currently banned by admin. Support"; break;}
         }
             
     }
