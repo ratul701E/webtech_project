@@ -64,29 +64,34 @@
             <form action="../controller/unverified_user_process.php" method="post">
                 <tr>
                     <td><b>Enter OTP</b></td>
-                    <td><input type="number" name="otp" id=""></td>
+                    <td><input type="number" name="otp" id="" required></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        
-                        <input type="submit" name="get_otp" value="Get OTP">
                         <input type="submit" name="verify" value="Verify">
-                        
                     </td>
                 </tr>
-                <?php if(strlen($msg) > 0){ ?>
-                    <tr align="center">
-                        <td colspan="2"><font color="red"><?=$msg?></font></td>
-                    </tr>
-                <?php } ?>
-
-                <?php if(strlen($success_msg) > 0){ ?>
-                    <tr align="center">
-                        <td colspan="2"><font color="green"><?=$success_msg?></font></td>
-                    </tr>
-                <?php } ?>
-
             </form>
+
+            <form action="../controller/unverified_user_process.php" method="post">
+                <tr>
+                    <td colspan="2" align="right">
+                        <input type="submit" name="get_otp" value="Get Otp">
+                    </td>
+                </tr>
+            </form>
+
+            <?php if(strlen($msg) > 0){ ?>
+                <tr align="center">
+                    <td colspan="2"><font color="red"><?=$msg?></font></td>
+                </tr>
+            <?php } ?>
+
+            <?php if(strlen($success_msg) > 0){ ?>
+                <tr align="center">
+                    <td colspan="2"><font color="green"><?=$success_msg?></font></td>
+                </tr>
+            <?php } ?>
 
             <tr>
                 
