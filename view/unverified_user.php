@@ -18,7 +18,7 @@
     if(isset($_GET['err'])){
         $err_msg = $_GET['err'];
         switch($err_msg){
-            case 'failed':{$msg = "Failed to varify."; break;}
+            case 'sendFailed':{$msg = "Failed to send OTP."; break;}
             case 'otpMismatch':{$msg = "Wrong OTP."; break;}
         }   
     }

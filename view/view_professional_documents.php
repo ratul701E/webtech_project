@@ -6,7 +6,8 @@
         exit();
     }
 
-    $current_user_role = $_SESSION['user']['role'];
+    $user = $_SESSION['user'];
+    $current_user_role = $user['role'];
 
     if($current_user_role == 'Aspirant'){
         header('location: signin.php');

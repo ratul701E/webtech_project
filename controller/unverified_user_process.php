@@ -57,7 +57,7 @@
             exit();
         } 
         else{
-            header('location: ../view/unverified_user.php?err=failed');
+            header('location: ../view/unverified_user.php?err=sendFailed');
             exit();
         }
     }
