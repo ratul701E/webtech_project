@@ -1,25 +1,36 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve the form data
-    $username = $_POST["username"];
-    $firstName = $_POST["first-name"];
-    $lastName = $_POST["last-name"];
-    $usernameEmail = $_POST["username-email"];
-    $email = $_POST["email"];
-    $phoneNumber = $_POST["phone"];
-    $gender = $_POST["gender"];
-    $country = $_POST["country"];
-    $address = $_POST["address"];
-    $password = $_POST["password"];
-    echo "Username: " . $username . "<br>";
-    echo "First Name: " . $firstName . "<br>";
-    echo "Last Name: " . $lastName . "<br>";
-    echo "Username/Email: " . $usernameEmail . "<br>";
-    echo "Email Address: " . $email . "<br>";
-    echo "Phone Number: " . $phoneNumber . "<br>";
-    echo "Gender: " . $gender . "<br>";
-    echo "Country/Region: " . $country . "<br>";
-    echo "Address: " . $address . "<br>";
-    echo "Password: " . $password . "<br>";
-}
+    require_once('../model/userModel.php');
+
+    if (isset($_POST['add_admin'])) {
+        $username = $_POST["username"];
+        $first_name = $_POST["first_name"];
+        $last_name = $_POST["last_name"];
+        $email = $_POST["email"];
+        $phone = $_POST["phone"];
+        $gender = $_POST["gender"];
+        $country = $_POST["country"];
+        $address = $_POST["address"];
+        $password = $_POST["password"];
+        $role = 'Admin';
+        $profile = 'default.jpg';
+        $validity = 'unverified';
+
+
+
+        if(isExistUser($username, $email)) {header('location: ../view/add_admin.php?err=userExist'); exit();}
+        if(strlen($password) < 8) {header('location: ../view/add_admin.php?err=shortPassword'); exit();}
+
+        $status = addUser($username, $first_name, $last_name, $email, $phone, $gender, $country, $address, $password, $role, $profile, $validity);
+
+        if($status){
+            header('location: ../view/add_admin.php?success=created');
+        }
+        else{
+            header('location: ../view/add_admin.php?err=failed');
+        }
+
+
+
+
+    }
 ?>
