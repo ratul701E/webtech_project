@@ -1,31 +1,35 @@
 <?php
-     session_start();
+session_start();
 
-     if(!isset($_SESSION['logged_in']) ) {
-         header('location: signin.php');
-         exit();
-     }
-     
+if (!isset($_SESSION['logged_in'])) {
+    header('location: signin.php');
+    exit();
+}
 
-    $msg = '';
-    if(isset($_GET['err'])){
-        $err_msg = $_GET['err'];
-        switch($err_msg){
-            case 'uploadFailed':{$msg = "Failed to upload your document."; break;}
-        }
-            
+
+$msg = '';
+if (isset($_GET['err'])) {
+    $err_msg = $_GET['err'];
+    switch ($err_msg) {
+        case 'uploadFailed': {
+                $msg = "Failed to upload your document.";
+                break;
+            }
     }
+}
 
-    $success_msg = '';
-    if(isset($_GET['success'])){
-        $s_msg = $_GET['success'];
-        switch($s_msg){
-            case 'uploaded':{$success_msg = "Document uploaded successfully."; break;}
-            
-        }   
+$success_msg = '';
+if (isset($_GET['success'])) {
+    $s_msg = $_GET['success'];
+    switch ($s_msg) {
+        case 'uploaded': {
+                $success_msg = "Document uploaded successfully.";
+                break;
+            }
     }
+}
 
-    $user = $_SESSION['user'];
+$user = $_SESSION['user'];
 
 
 ?>
@@ -34,9 +38,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Please Verfiy</title>
 </head>
+
 <body>
     <?php require_once('top_navbar.php'); ?>
 
@@ -44,21 +50,27 @@
         <tr>
             <td>
                 <fieldset>
-                    <legend align="center"><h3>Please Upload Document and Wait For Varify</h3></legend>
-                    <table  align="center" cellpadding="5">
+                    <legend align="center">
+                        <h3>Please Upload Document and Wait For Varify</h3>
+                    </legend>
+                    <table align="center" cellpadding="5">
                         <tr align="center">
-                            <td colspan="2"><img src="../vendor/profiles/<?=$user['profile_location']?>" alt="" width="200"></td>
+                            <td colspan="2"><img src="../vendor/profiles/<?= $user['profile_location'] ?>" alt="" width="200"></td>
                         </tr>
 
-                        <?php if(strlen($msg) > 0){ ?>
+                        <?php if (strlen($msg) > 0) { ?>
                             <tr align="center">
-                                <td colspan="2"><font color="red"><?=$msg?></font></td>
+                                <td colspan="2">
+                                    <font color="red"><?= $msg ?></font>
+                                </td>
                             </tr>
                         <?php } ?>
 
-                        <?php if(strlen($success_msg) > 0){ ?>
+                        <?php if (strlen($success_msg) > 0) { ?>
                             <tr align="center">
-                                <td colspan="2"><font color="green"><?=$success_msg?></font></td>
+                                <td colspan="2">
+                                    <font color="green"><?= $success_msg ?></font>
+                                </td>
                             </tr>
                         <?php } ?>
 
@@ -75,13 +87,13 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <a href="view_professional_documents.php?prof=<?=$user['username']?>"> View Uploaded Documents</a>
+                                    <a href="view_professional_documents.php?prof=<?= $user['username'] ?>"> View Uploaded Documents</a>
                                 </td>
                             </tr>
-                            
+
                         </form>
                         <tr>
-                            
+
                             <td align="center" colspan="2"><a href="update_profile.php">Update Profile</a></td>
                         </tr>
                         <tr>
@@ -96,4 +108,5 @@
 
     <?php include_once('bottom_navbar.php'); ?>
 </body>
+
 </html>

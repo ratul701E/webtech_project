@@ -1,27 +1,31 @@
 <?php
 
-    session_start();
-    require_once('../model/queryModel.php');
+session_start();
+require_once('../model/queryModel.php');
 
 
-    if(!isset($_SESSION['logged_in']) ) {
-        header('location: signin.php');
-        exit();
-    }
+if (!isset($_SESSION['logged_in'])) {
+    header('location: signin.php');
+    exit();
+}
 
-    $user = $_SESSION['user'];
+$user = $_SESSION['user'];
 
-    if($user['role'] != 'Admin' and $user['role'] != 'SuperAdmin'){
-        header('location: profile.php?username='.$user['username']);
-        exit();
-    }
+if ($user['role'] != 'Admin' and $user['role'] != 'SuperAdmin') {
+    header('location: profile.php?username=' . $user['username']);
+    exit();
+}
 
-    if(!isset($_GET['qid'])){
-        header('location: manage_query.php');
-        exit();
-    }
+if (!isset($_GET['qid'])) {
+    header('location: manage_query.php');
+    exit();
+}
 
-    $query = getQuery($_GET['qid']);
+$query = getQuery($_GET['qid']);
+
+if ($query == null) {
+    header('location: manage_query.php');
+}
 
 
 
@@ -30,24 +34,28 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>View - Reply query</title>
 </head>
+
 <body>
     <?php require_once('top_navbar.php'); ?>
     <table align="center">
         <tr>
             <td>
                 <fieldset>
-                    <legend align="center"><h3>View/Reply Query</h3></legend>
+                    <legend align="center">
+                        <h3>View/Reply Query</h3>
+                    </legend>
                     <table>
                         <tr>
                             <td><b>Email: </b></td>
-                            <td><?=$query['sender_email']?></td>
+                            <td><?= $query['sender_email'] ?></td>
                         </tr>
                         <tr>
                             <td><b>Query: </b></td>
-                            <td><?=$query['query']?></td>
+                            <td><?= $query['query'] ?></td>
                         </tr>
                         <tr>
                             <td><br></td>
@@ -58,9 +66,9 @@
                                 <form action="../controller/manage_query_process.php" method="post">
                                     <textarea name="reply_msg" id="" cols="30" rows="10" placeholder="Write a reply ..."></textarea>
                                     <br>
-                                    <a href="manage_query.php"><input type="button"  value="Back"></a>
+                                    <a href="manage_query.php"><input type="button" value="Back"></a>
                                     <input type="submit" name="reply" value="Send">
-                                    <input type="hidden" name="query_id" value="<?=$query['query_id']?>">
+                                    <input type="hidden" name="query_id" value="<?= $query['query_id'] ?>">
                                 </form>
                             </td>
                         </tr>
@@ -70,4 +78,5 @@
         </tr>
     </table>
 </body>
+
 </html>
