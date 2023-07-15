@@ -30,11 +30,11 @@
                 <fieldset>
                     <legend align="center"><h3>Verify Professionals</h3></legend>
 
-                    <table align="center" border="1" cellspacing="0" cellpadding="10">
+                    <table align="center"  cellspacing="0" cellpadding="15">
                         <tr>
-                        <th>Professional Name</th>
-                        <th>Action</th>
-                        <th>View Documents</th>
+                        <th>Professional Name <br><hr></th>
+                        <th>Action <br><hr></th>
+                        <th>View Documents <br><hr></th>
                         </tr>
                         <?php
                             if(count($invalid_professionals) == 0){

@@ -104,7 +104,7 @@
                                             <td>
                                                 <img src="../vendor/profiles/<?=$temp_user['profile_location']?>" alt="" width="30">
                                                 <br>
-                                                <?=$temp_user['username']?> &nbsp;
+                                                <a href="profile_view.php?username=<?=$temp_user['username']?>"><?=$temp_user['username']?></a>
                                             </td>
                                             <td><?=$temp_user['email']?></td>
                                             <td><?=$temp_user['role']?></td>
@@ -137,7 +137,7 @@
                                                     
                                                 </form>
                                             </td>
-                                            <td>
+                                            <td align="center">
                                                 <?php
                                                     if($temp_user['isExist'] == 'false') echo '<font color = "red">Removed Users</font>';
                                                     else if($temp_user['status'] == 'invalid') echo '<font color = "orange">Invalid</font>';

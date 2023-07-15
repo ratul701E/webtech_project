@@ -32,7 +32,7 @@
             setcookie('username', $username, time()+10000000000, '/');
          }
 
-        header('location: ../view/discussion.php');
+        header('location: ../view/profile.php?username='.$username);
         exit();
      }
      else header('location: ../view/signin.php?err=mismatch');

@@ -106,6 +106,20 @@
         return false;
     }
 
+    function getAllProfessionals($key=''){
+        $con = dbConnection();
+        $sql = "SELECT * from user where role='Professional' and isExist='true' and (username like '%{$key}%' or email like '%{$key}%')";
+        
+        if($result = mysqli_query($con, $sql)){
+            $users = [];
+            while($row=mysqli_fetch_assoc($result)){
+                array_push($users, $row);
+            }
+            return $users;
+        }
+        return false;
+    }
+
 
     function getAllUsers($email_or_username = '', $like = ''){
         $con = dbConnection();

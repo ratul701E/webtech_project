@@ -21,7 +21,10 @@
     if(isExistUser($username, $email)) {header('location: ../view/signup.php?err=userExist'); exit();}
     if(strlen($password) < 8) {header('location: ../view/signup.php?err=shortPassword'); exit();}
     if($password != $cpassword) {header('location: ../view/signup.php?err=passwordMismatch'); exit();}
-    //if($password != $cpassword) header('location: ../view/signup.php?PNM=true');
+
+    if($password != $cpassword) {header('location: ../view/signup.php?err=passwordMismatch'); exit();}
+
+
     
     
     $profile = '';

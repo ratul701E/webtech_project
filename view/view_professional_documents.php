@@ -83,10 +83,10 @@
                                         ?>
                                             <tr>
                                                 <td colspan="2" align="center">
-                                                    <img src="../vendor/documents/<?=$doc?>" width="150" height="200">
+                                                    <img src="../vendor/documents/<?=$doc?>" width="500" height="500">
                                                     <br>
                                                     <form action="../controller/verify_process.php" method="post">
-                                                        <a href="../vendor/documents/<?=$doc?>" download> <input type="button" value="Download"> </a> &nbsp;
+                                                        <a href="../vendor/documents/<?=$doc?>" download> <input type="button" value="Download"></a> &nbsp;
                                                         <input type="submit" value="Remove" name="remove_doc"> 
                                                         <input type="hidden" name="file" value="<?=$doc?>">
                                                         <input type="hidden" name="targeted_user" value="<?=$prof['username']?>">

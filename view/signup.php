@@ -76,7 +76,7 @@
                             </tr>
                             <tr>
                                 <td>Phone Number:</td>
-                                <td><input type="tel" id="phone" name="phone" required></td>
+                                <td><input type="number" id="phone" name="phone" required> <i> no country code needed</i></td>
                             </tr>
                             <tr>
                                 <td>Gender:</td>
@@ -114,12 +114,12 @@
 
                             <tr>
                                 <td>Password</td>
-                                <td><input type="text" name="password" id=""></td>
+                                <td><input type="password" name="password" id=""></td>
                             </tr>
 
                             <tr>
                                 <td>Confirm Password</td>
-                                <td><input type="text" name="cpassword" id=""></td>
+                                <td><input type="password" name="cpassword" id=""></td>
                             </tr>
                             
                             <tr>
@@ -138,7 +138,7 @@
                                 <td><br></td>
                             </tr>
                             <tr>
-                                <td colspan="2" align="right">
+                                <td colspan="2" align="center">
                                     <input type="submit" name="signup" value="Sign Up">
                                 </td>
                             </tr>

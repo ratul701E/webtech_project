@@ -29,7 +29,7 @@
         <tr>
             <td>
                 <fieldset>
-                    <legend align="center"><font size="5">Posted by <a href="profile.php?username="<?=$post['author']?>> <?=$post['author']?> </a> &#x2022; <?=date_format(new DateTime($post['date']), "D H:i A")?> </font></legend>
+                    <legend align="center"><font size="5">Posted by <a href="profile_view.php?username=<?=$post['author']?>"> <?=$post['author']?> </a> &#x2022; <?=date_format(new DateTime($post['date']), "D H:i A")?> </font></legend>
                     <p><i>Last Modified: <?=date_format(new DateTime($post['last_edited']), "D H:i A")?></i></p>
                     <p><b>Domain:</b> <?=getDomainName($post['domain'])?> </p>
                     <p><b><?=$post['title']?></b></p>
@@ -48,7 +48,7 @@
                             ?>
                                 <table>
                                     <tr>
-                                        <td><b><a href="profile.php?username=<?=$comment['username']?>"> <?php if(isset($_SESSION['logged_in']) and $comment['username'] == $user['username']) echo 'me'; else echo '@'.$comment['username']; ?> </a></b></td>
+                                        <td><b><a href="profile_view.php?username=<?=$comment['username']?>"> <?php if(isset($_SESSION['logged_in']) and $comment['username'] == $user['username']) echo 'me'; else echo '@'.$comment['username']; ?> </a></b></td>
                                         <td> &nbsp;<?=$comment['comment']?></td>
                                         <td> • <i><?=date_format(new DateTime($comment['date']), "D H:i a")?></i></td>
                                     </tr`>
