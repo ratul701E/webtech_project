@@ -15,7 +15,7 @@
     $address = $_POST['address'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
-    $validity = 'unvarified';
+    $validity = 'unverified';
 
 
     if(isExistUser($username, $email)) {header('location: ../view/signup.php?err=userExist'); exit();}

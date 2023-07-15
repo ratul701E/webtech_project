@@ -9,7 +9,7 @@
     
      $user = $_SESSION['user'];
 
-     if($user['status'] != 'unvarified'){
+     if($user['status'] != 'unverified'){
         header('location: profile.php?username='.$user['username']);
         exit();
     }
@@ -41,13 +41,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Unvarified User</title>
+    <title>Unverified User</title>
 </head>
 <body>
     <?php require_once('topnavigationbar.php'); ?>
 
     <fieldset>
-        <legend align="center"><h3>Unvarified Account</h3></legend>
+        <legend align="center"><h3>Unverified Account</h3></legend>
         <table align="center">
 
             <tr>
@@ -61,7 +61,7 @@
                 <td><b>Email:</b></td>
                 <td><?=$user['email']?></td>
             </tr>
-            <form action="../controller/unvarified_user_process.php" method="post">
+            <form action="../controller/unverified_user_process.php" method="post">
                 <tr>
                     <td><b>Enter OTP</b></td>
                     <td><input type="number" name="otp" id=""></td>

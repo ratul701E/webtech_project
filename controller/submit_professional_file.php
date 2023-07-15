@@ -15,12 +15,12 @@
         $document_des = "../vendor/documents/".$_FILES['document']['name'];
         if(move_uploaded_file($document_src, $document_des)){}
         else {
-            header('location: ../view/unvarified_professional.php?err=uploadFailed');
+            header('location: ../view/unverified_professional.php?err=uploadFailed');
             exit();
         }
     }
     else{
-        header('location: ../view/unvarified_professional.php?err=uploadFailed');
+        header('location: ../view/unverified_professional.php?err=uploadFailed');
         exit();
     }
 
@@ -31,7 +31,7 @@
     $status = addDocument($user['username'], $_FILES['document']['name']);
 
     if($status){
-        header('location: ../view/unvarified_professional.php?success=uploaded');
+        header('location: ../view/unverified_professional.php?success=uploaded');
     }
     else{
         header('location: ../view/signup.php?err=uploadFailed');

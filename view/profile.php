@@ -10,11 +10,11 @@
     $username = $_GET['username'];
 
     if($user['status'] == 'invalid' ){
-        header('location: unvarified_professional.php');
+        header('location: unverified_professional.php');
         exit();
     }
-    else if($user['status'] == 'unvarified'){
-        header('location: unvarified_user.php');
+    else if($user['status'] == 'unverified'){
+        header('location: unverified_user.php');
         exit();
     }
 

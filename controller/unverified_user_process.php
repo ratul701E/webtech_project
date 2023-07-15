@@ -12,7 +12,7 @@
 
         $otp = $_POST['otp'];
         if($otp != $_SESSION['verify_user_otp']){
-            header('location: ../view/unvarified_user.php?err=otpMismatch');
+            header('location: ../view/unverified_user.php?err=otpMismatch');
             exit();
         }
 
@@ -40,7 +40,7 @@
             exit();
         }
         else{
-            header('location: ../view/unvarified_user.php?err=failed'); 
+            header('location: ../view/unverified_user.php?err=failed'); 
             exit();
         }
 
@@ -53,11 +53,11 @@
         $status = send_mail($email, 'Your OTP for account verify is '.$otp, 'Your OTP for account verify is '.$otp);
         if($status){
             $_SESSION['verify_user_otp'] = $otp;
-            header('location: ../view/unvarified_user.php?success=sent');
+            header('location: ../view/unverified_user.php?success=sent');
             exit();
         } 
         else{
-            header('location: ../view/unvarified_user.php?err=failed');
+            header('location: ../view/unverified_user.php?err=failed');
             exit();
         }
     }

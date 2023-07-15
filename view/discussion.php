@@ -42,7 +42,7 @@
         <tr>
             <td>
                 <?php
-                    if(isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin'){
+                    if(isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin' and $user['status'] != 'unverified'){
                         ?>
                             <fieldset>
                                 <legend align="center"><font size="6">Create Post</font></legend>
@@ -139,7 +139,7 @@
                             <hr>
 
                             <?php
-                                if(isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin'){
+                                if(isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin' and $user['status'] != 'unverified'){
                                     ?>
                                         <form action="../controller/discussion_process.php" method="post">
                                             Write a comment <br> <textarea name="msg" id="" cols="30" rows="3" required></textarea>

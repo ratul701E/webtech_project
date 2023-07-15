@@ -41,7 +41,7 @@
 
             $_SESSION['user'] = getUser($user['username']);
 
-            header('location: ../view/unvarified_professional.php');
+            header('location: ../view/unverified_professional.php');
             exit();
         }
     
