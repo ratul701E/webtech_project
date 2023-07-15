@@ -122,6 +122,7 @@ if (isset($_GET['success'])) {
             </td>
         </tr>
     </table>
+    <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>

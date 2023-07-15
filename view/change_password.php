@@ -80,6 +80,7 @@ if (isset($_GET['err'])) {
       </td>
     </tr>
   </table>
+  <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>

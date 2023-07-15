@@ -1,3 +1,11 @@
+<?php
+  session_start();
+  if(isset($_SESSION['logged_in'])){
+    $user = $_SESSION['user'];
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +27,7 @@
                         <table align="center">
                             <tr>
                                 <td>Email:</td>
-                                <td><input type="text" name="email" id=""></td>
+                                <td><input type="text" name="email" id="" required></td>
                             </tr>
                             <tr>
                                 <td><label for="query">Query:</label></td>
@@ -34,6 +42,7 @@
             </tr>
         </table>
     </form>
+    <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>

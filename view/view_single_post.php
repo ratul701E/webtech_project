@@ -68,7 +68,7 @@ $user = $_SESSION['user'];
         </tr>
     </table>
     <p align="center"><a href="manage_discussionPosts.php"><input type="button" value="Back"></a></p>
-
+    <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>

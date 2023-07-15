@@ -93,7 +93,7 @@ $user = $_SESSION['user'];
       </td>
     </tr>
   </table>
-
+  <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>

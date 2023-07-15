@@ -77,6 +77,7 @@ if (!isset($_SESSION['logged_in'])) {
       </td>
     </tr>
   </table>
+  <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>

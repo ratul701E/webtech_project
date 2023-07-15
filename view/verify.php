@@ -87,6 +87,7 @@ $invalid_professionals = getInvalidProfessionals();
             </td>
         </tr>
     </table>
+    <?php include_once('bottom_navbar.php'); ?>
 
 </body>
 

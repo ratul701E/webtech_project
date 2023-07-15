@@ -43,7 +43,7 @@
 
     function getAllPosts($like=''){
         $con = dbConnection();
-        $sql = "SELECT * from discussion_posts where author like '%{$like}%' or post_id like '%{$like}%' or date like '%{$like}%';";
+        $sql = "SELECT * from discussion_posts  where author like '%{$like}%' or post_id like '%{$like}%' or date like '%{$like}%' order by date DESC;";
         
         if($result = mysqli_query($con, $sql)){
             $posts = [];
@@ -57,7 +57,7 @@
 
     function getUserAllPosts($username){
         $con = dbConnection();
-        $sql = "SELECT * from discussion_posts where author='{$username}';";
+        $sql = "SELECT * from discussion_posts where author='{$username}' order by date DESC;";
         
         if($result = mysqli_query($con, $sql)){
             $posts = [];
@@ -71,7 +71,7 @@
 
     function getCommentedAllPosts($username){
         $con = dbConnection();
-        $sql = "SELECT * from discussion_posts where post_id in (SELECT post_id from discussion_comments where username='{$username}');";
+        $sql = "SELECT * from discussion_posts where post_id in (SELECT post_id from discussion_comments where username='{$username}') order by date DESC;";
         
         if($result = mysqli_query($con, $sql)){
             $posts = [];

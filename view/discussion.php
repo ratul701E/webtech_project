@@ -138,8 +138,12 @@ if (isset($_GET['success'])) {
                     <fieldset>
 
                         <legend align="center">
-                            <font size="5">Posted by <a href="profile_view.php?username=<?= $post['author'] ?>"> <?php if (isset($_SESSION['logged_in']) and $post['author'] == $user['username']) echo 'you';
-                                                                                                                else echo '@' . $post['author']; ?> </a> &#x2022; <?= date_format(new DateTime($post['date']), "D h:i A") ?> </font>
+                            <font size="5">Posted by <a href="profile_view.php?username=<?= $post['author'] ?>"> 
+                                <?php 
+                                    if (isset($_SESSION['logged_in']) and $post['author'] == $user['username']) echo 'you';
+                                    else echo '@' . $post['author']; ?> </a> &#x2022; <?= date_format(new DateTime($post['date']), "D h:i A") 
+                                ?> 
+                            </font>
                         </legend>
 
 
@@ -153,7 +157,7 @@ if (isset($_GET['success'])) {
                         <?php
                         }
                         ?>
-                        <p><i>Last Modified: <?= date_format(new DateTime($post['last_edited']), "D H:i A") ?></i></p>
+                        <p><i><b>Last Modified:</b> <?= date_format(new DateTime($post['last_edited']), "D h:i A") ?></i></p>
                         <p><b>Domain:</b> <?= getDomainName($post['domain']) ?> </p>
                         <p><b><?= $post['title'] ?></b></p>
                         <p>
@@ -187,7 +191,7 @@ if (isset($_GET['success'])) {
                                     <td><b><a href="profile_view.php?username=<?= $comment['username'] ?>"> <?php if (isset($_SESSION['logged_in']) and $comment['username'] == $user['username']) echo 'me';
                                                                                                             else echo '@' . $comment['username']; ?> </a></b></td>
                                     <td> &nbsp;<?= $comment['comment'] ?></td>
-                                    <td> • <i><?= date_format(new DateTime($comment['date']), "D H:i a") ?></i></td>
+                                    <td> • <i><?= date_format(new DateTime($comment['date']), "D h:i a") ?></i></td>
                                     </tr`>
                             </table>
                         <?php
@@ -208,7 +212,7 @@ if (isset($_GET['success'])) {
     </table>
     <?php include 'bottom_navbar.php' ?>
 
-
+    <?php include_once('bottom_navbar.php'); ?>
 </body>
 
 </html>
