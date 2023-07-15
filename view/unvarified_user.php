@@ -44,6 +44,8 @@
     <title>Unvarified User</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
     <fieldset>
         <legend align="center"><h3>Unvarified Account</h3></legend>
         <table align="center">

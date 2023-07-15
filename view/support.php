@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>FAQ</title>
-        </head>
-        <body>
-            <form action="../controller/supportprocess.php" method="POST">
-                <fieldset>
-                <legend><h1>Support</h1></legend>
-                <tr>
-                    <td>Email:</td><br>
-                    <td><input type="text" name="email" id=""></td><br><br>
-                </tr>
-                <tr>
-                    <td><label for="query">Query:</label><br>
-                    <td><textarea name="query" id="" cols="25" rows="3" required></textarea>
-                </td>
-            </tr>
-            <br><br>
-                  
-                <button type="submit" name="submit">Submit</button>
+        <title>Professional sage | Support</title>
+    </head>
+    <body>
+        <?php require_once('topnavigationbar.php'); ?>
+        <form action="../controller/supportprocess.php" method="POST">
+            <fieldset>
+                <legend align="center"><h3>Support</h3></legend>
+                <p align="center"><b><i>*Our admin will update you on the given email. It can take 2-3 days long.</i></b></p>
+                <table align="center">
+                    <tr>
+                        <td>Email:</td>
+                        <td><input type="text" name="email" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><label for="query">Query:</label></td>
+                        <td><textarea name="query" id="" cols="25" rows="3" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td align="right" colspan="2"><button type="submit" name="submit">Submit Query</button></td>
+                    </tr>
+                </table>
             </fieldset>
         </form>
     </body>

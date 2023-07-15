@@ -17,6 +17,7 @@ if(isset($_GET['err'])){
     <title>Professional Sage | Signup</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
 
     <fieldset>
         <legend>Account Signup</legend>

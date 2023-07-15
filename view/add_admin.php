@@ -4,6 +4,7 @@
     <title>Add Admin</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
 
     <table align="center"  bgcolor="#f1f1f1">
         <tr>

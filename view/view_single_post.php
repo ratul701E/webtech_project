@@ -13,6 +13,7 @@
 
     $post_id = $_GET['post_id'];
     $post = getPost($post_id);
+    $user = $_SESSION['user'];
 
 ?>
 
@@ -22,6 +23,8 @@
     <title>Document</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
     <table align="center">
         <tr>
             <td>
@@ -57,6 +60,7 @@
             </td>
         </tr>
     </table>
+    <p align="center"><a href="manage_discussionPosts.php"><input type="button" value="Back"></a></p>
     
 </body>
 </html>

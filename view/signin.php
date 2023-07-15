@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+    if(isset($_SESSION['logged_in'])){
+        header('location: profile.php?username='.$_SESSION['username']);
+        exit();
+    }
+
     require_once('../model/userModel.php');
     if(isset($_COOKIE['logged_in'])){
         $user = getUser($_COOKIE['username']);
@@ -39,6 +45,8 @@
 <title>Professional Sage | Signin</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
     <fieldset>
         <legend align="center"><h3>Signin</h3></legend>
         <form action="../controller/signin_process.php" method="post">

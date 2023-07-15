@@ -33,6 +33,8 @@
     <title>Profile | <?= $user['username']?></title>
 </head>
 <body>
+    
+    <?php require_once('topnavigationbar.php'); ?>
 
     <fieldset>
         <legend align="center">

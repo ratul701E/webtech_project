@@ -31,6 +31,7 @@
     <title>Professional Sage | Forgot Password</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
     <fieldset>
         <legend align="center"> <h3>Forgot Password</h3> </legend>
         

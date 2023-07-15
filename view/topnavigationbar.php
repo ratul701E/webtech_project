@@ -1,69 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Top Navigation Bar</title>
-</head>
-<body>
-    <table>
+<fieldset>
+    <img src="../vendor/icons/main_logo.png" alt="" width="30"> &nbsp;&nbsp;&nbsp;
+    <?php if(isset($_SESSION['logged_in'])) {
+        ?>
+            <a href="profile.php?username=user">Profile</a> &nbsp;&nbsp;&nbsp;
+        <?php
+    }
+    ?>
+    <a href="discussion.php">Discussion</a> &nbsp;&nbsp;&nbsp;
+
+    <table align="right">
         <tr>
-            <td>
-                <table>
-                    <tr>
-                        <td>
-                            <img src="logo.jpg" alt="Logo" height="20px" width="30px">
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td>
-                <table align="center">
-                    <tr>
-                        <td>
-                            <form>
-                                <input type="text" placeholder="Search...">
-                                <button type="submit">
-                                    <img src="search.png" alt="Search" height="10px" width="10px">
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-            <table align="center">
-                          <a href="#">
-                                <img src="profile.png" alt="Profile" height="20px" width="30px">
-                            </a>
-                            <a href="signin.php">
-                                <img src="logout.png" alt="Logout" height="20px" width="30px">
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
+            
+            <form action="../controller/logout.php" method="post">
+                <?php
+                    if(!isset($_SESSION['logged_in'])) {?> <td><a href="signin.php"><input type="button" value="Signin" id=""></a></td> <?php }
+                    if(isset($_SESSION['logged_in'])) {
+                        ?>
+                            <td><img src="../vendor/profiles/<?=$user['profile_location']?>" alt="" width="30"></td>
+                            <td><?=$user['username']?></td>
+                            <td>&nbsp;&nbsp;</td>
+                            <td><input type="submit" value="Logout" id=""></td> 
+                        <?php
+                    }
+                ?>
+            </form>
         </tr>
     </table>
-
-    <table align="center">
-        <tr>
-            <td>
-                <a href="#">About Us</a>
-            </td>
-            <td>
-                <a href="#">FAQ</a>
-            </td>
-            <td>
-                <a href="#">Support</a>
-            </td>
-        </tr>
-    </table>
-
-    <footer>
-        <p>&copy; 2023 Your Website. All rights reserved. | Designed by Your Name</p>
-        <div>
-            <a href="https://www.facebook.com/yourpage"align="center" target="_blank">Facebook</a> |
-            <a href="mailto:info@gmail.com"align="center">Email</a>
-        </div>
-    </footer>
-</body>
-</html>
+</fieldset>

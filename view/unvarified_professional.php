@@ -38,6 +38,8 @@
     <title>Please Verfiy</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
     <fieldset>
         <legend align="center"><h3>Please Upload Document and Wait For Varify</h3></legend>
         <table  align="center" cellpadding="5">

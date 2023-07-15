@@ -46,6 +46,8 @@
 
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
   <fieldset>
     <legend align="center"><h3>User Account Management</h3></legend>
     <table cellspacing="0" cellpadding="10" align="center">

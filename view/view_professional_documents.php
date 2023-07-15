@@ -37,6 +37,8 @@
     <title>Professional Sage | <?=$prof['username']?> Documents</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
     <h2 align='center'>View Documents</h2>
     <fieldset>
         <table align="center">

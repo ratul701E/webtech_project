@@ -24,6 +24,7 @@
   <title>Edit Post</title>
 </head>
 <body>
+  <?php require_once('topnavigationbar.php'); ?>
   <fieldset>
     <legend align="center"><h2>Edit Post</h2></legend>
     <form action="../controller/edit_post_process.php" method="post">

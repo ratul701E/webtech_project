@@ -13,6 +13,8 @@
   <title>Professional Sage | Update Info</title>
 </head>
 <body>
+  <?php require_once('topnavigationbar.php'); ?>
+
   <fieldset>
     <legend align="center"><h3>Update Profile @<?=$user['username']?></h3></legend>
     <form action="../controller/update_profile_process.php" method="post" enctype="multipart/form-data">

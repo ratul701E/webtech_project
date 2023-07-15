@@ -5,10 +5,8 @@
     require_once('../model/discussion_postsModel.php');
     require_once('../model/discussion_commentsModel.php');
 
-    $post_com_previllage = '';
-    if(!isset($_SESSION['logged_in'])) $post_com_previllage = 'disabled';
+    if(isset($_SESSION['logged_in'])) $user = $_SESSION['user'];
 
-    else $user = $_SESSION['user'];
 
     $msg = '';
     if(isset($_GET['err'])){
@@ -37,67 +35,71 @@
     <title>Professional Sage | Discussion</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
     <font face="courier"><h1 align="center">Discussion</h1></font>
     
     <table align="center">
         <tr>
             <td>
-                <fieldset>
-                <legend align="center"><font size="6">Create Post</font></legend>
-
-                <form action="../controller/discussion_process.php" method="post">
-                    Title: <input type="text" name="title" id="" required> <br> <br>
-                    Body: <br> 
-                    <textarea name="body" rows="7" cols="70" placeholder="Write your post here..." required></textarea>
-                    
-                    <?php
-                        $domains = getAllDomains();
-                    ?>
-                    <br>
-                    <br>
-                    <select name="domain_id" id="" required>
-                    <option value="">-- Select a domain --</option>
-                        <?php
-                            foreach($domains as $domain){
-                                ?>
-                                    <option value="<?=$domain['domain_id']?>"><?=$domain['name']?></option>
-                                <?php
-                            }
+                <?php
+                    if(isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin'){
                         ?>
-                    </select>
+                            <fieldset>
+                                <legend align="center"><font size="6">Create Post</font></legend>
 
-                    <br>
-                    <br>
+                                <form action="../controller/discussion_process.php" method="post">
+                                    Title: <input type="text" name="title" id="" required> <br> <br>
+                                    Body: <br> 
+                                    <textarea name="body" rows="7" cols="70" placeholder="Write your post here..." required></textarea>
+                                    
+                                    <?php
+                                        $domains = getAllDomains();
+                                    ?>
+                                    <br>
+                                    <br>
+                                    <select name="domain_id" id="" required>
+                                    <option value="">-- Select a domain --</option>
+                                        <?php
+                                            foreach($domains as $domain){
+                                                ?>
+                                                    <option value="<?=$domain['domain_id']?>"><?=$domain['name']?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
 
-                    <input type="submit" name="post" value="Post" <?=$post_com_previllage?>>
-                    <br>
-                    <?php if(strlen($msg) > 0){ ?>
-                        <h3 align="center"><font color="red"><?=$msg?></font></h3>
-                    <?php } ?>
+                                    <br>
+                                    <br>
 
-                    <?php if(strlen($success_msg) > 0){ ?>
-                        <h3 align="center"><font color="green"><?=$success_msg?></font></h3>
-                    <?php } ?>
+                                    <input type="submit" name="post" value="Post" >
+                                    <br>
+                                    <?php if(strlen($msg) > 0){ ?>
+                                        <h3 align="center"><font color="red"><?=$msg?></font></h3>
+                                    <?php } ?>
 
-                </form>
-            </fieldset>
+                                    <?php if(strlen($success_msg) > 0){ ?>
+                                        <h3 align="center"><font color="green"><?=$success_msg?></font></h3>
+                                    <?php } ?>
+
+                                </form>
+                            </fieldset>
+                        <?php
+                        if(isset($_SESSION['logged_in'])){
+                            ?>
+                                <p align="center">
+                                    <b>Filter</b> &nbsp;
+                                    <select name="filter" id="" onchange="location = this.value">
+                                    <option value="discussion.php" <?php if(!isset($_GET['view'])) echo 'selected' ?>>All Posts</option>
+                                    <option value="discussion.php?view=my_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'my_posts') echo 'selected' ?>>My Posts</option>
+                                    <option value="discussion.php?view=commented_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'commented_posts') echo 'selected' ?>>Commented Posts</option>
+                                    </select>
+                                </p>
+                            <?php
+                        }
+                    }
+                ?>
 
             <br>
-                
-            <?php
-                if(isset($_SESSION['logged_in'])){
-                    ?>
-                        <p align="center">
-                            <b>Filter</b> &nbsp;
-                            <select name="filter" id="" onchange="location = this.value">
-                            <option value="discussion.php" <?php if(!isset($_GET['view'])) echo 'selected' ?>>All Posts</option>
-                            <option value="discussion.php?view=my_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'my_posts') echo 'selected' ?>>My Posts</option>
-                            <option value="discussion.php?view=commented_posts" <?php if(isset($_GET['view']) and $_GET['view'] == 'commented_posts') echo 'selected' ?>>Commented Posts</option>
-                            </select>
-                        </p>
-                    <?php
-                }
-            ?>
 
             <?php
                 // fetching posts
@@ -110,7 +112,6 @@
                     }
                 }
                 else $posts = getAllPosts();
-                
 
                 foreach($posts as $post){
                     ?>
@@ -137,11 +138,17 @@
                             </p>
                             <hr>
 
-                            <form action="../controller/discussion_process.php" method="post">
-                                Write a comment <br> <textarea name="msg" id="" cols="30" rows="3" required></textarea>
-                                <input type="hidden" name="post_id" value="<?=$post['post_id']?>">
-                                &nbsp; <input type="submit" name="comment" value="Comment" id="" <?=$post_com_previllage?>>
-                            </form>
+                            <?php
+                                if(isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin'){
+                                    ?>
+                                        <form action="../controller/discussion_process.php" method="post">
+                                            Write a comment <br> <textarea name="msg" id="" cols="30" rows="3" required></textarea>
+                                            <input type="hidden" name="post_id" value="<?=$post['post_id']?>">
+                                            &nbsp; <input type="submit" name="comment" value="Comment" id="">
+                                        </form>
+                                    <?php
+                                }
+                            ?>
 
                             <br>
                             <br>
@@ -170,9 +177,7 @@
                         <br>
 
                     <?php
-
                 }
-
             ?>
             </td>
         </tr>

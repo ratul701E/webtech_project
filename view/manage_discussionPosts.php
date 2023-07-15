@@ -40,6 +40,8 @@
 
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
   <fieldset>
     <legend align="center" ><h3>Discussion Post Management</h3></legend>
     <table align="center"  cellspacing="0" cellpadding="10">

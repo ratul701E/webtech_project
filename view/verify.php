@@ -22,6 +22,8 @@
   <title>Verify Professionals</title>
 </head>
 <body>
+    <?php require_once('topnavigationbar.php'); ?>
+
   <fieldset>
     <legend align="center"><h3>Verify Professionals</h3></legend>
 

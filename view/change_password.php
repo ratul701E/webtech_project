@@ -25,6 +25,7 @@
   <title>Professional Sage | Change Password</title>
 </head>
 <body>
+  <?php require_once('topnavigationbar.php'); ?>
   <fieldset>
     <legend align="center"><h3>Change Password @<?=$user['username']?></h3></legend>
     <form action="../controller/change_password_process.php" method="post">
