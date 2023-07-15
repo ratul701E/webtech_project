@@ -11,6 +11,13 @@
 
     }
 
+    if(isset($_POST['remove_all'])){
+        $post_id = $_POST['post_id'];
+
+        deleteAllPost();
+
+    }
+
     header('location: ../view/manage_discussionPosts.php');
 
 ?>

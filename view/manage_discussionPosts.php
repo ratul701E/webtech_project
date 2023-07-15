@@ -40,63 +40,73 @@
 
 </head>
 <body>
-    <?php require_once('topnavigationbar.php'); ?>
+    <?php require_once('top_navbar.php'); ?>
 
   <table align="center">
     <tr>
         <td>
             <fieldset>
                 <legend align="center" ><h3>Discussion Post Management</h3></legend>
-                <table align="center"  cellspacing="0" cellpadding="10">
-                <tr>
-                    <td colspan="4" align="center">
-                        <form action="" method="post">
-                            <input type="text" name="search_value" placeholder="Enter post id or author or date posted" <?php if(isset($_POST['search'])) echo"value='".$_POST['search_value']."'" ?> size=30> &nbsp;
-                            <input type="submit" name="search" value="Search">
-                            <input type="submit" name="clear" value="Clear">
-                        </form>
-                    </td>
-                </tr>
+                <form action="../controller/manage_discussionPost_process.php" method="post">
+                    <table align="center"  cellspacing="0" cellpadding="10">
+                        <tr>
+                            <td colspan="4" align="center">
+                                <form action="" method="post">
+                                    <input type="text" name="search_value" placeholder="Enter post id or author or date posted" <?php if(isset($_POST['search'])) echo"value='".$_POST['search_value']."'" ?> size=30> &nbsp;
+                                    <input type="submit" name="search" value="Search">
+                                    <input type="submit" name="clear" value="Clear">
+                                </form>
+                            </td>
+                        </tr>
 
-                    <tr align="center">
-                    <th>Post ID <br> <hr> </th>
-                    <th>Auhor <br> <hr> </th>
-                    <th>Posted Date <br> <hr> </th>
-                    <th>Action <br> <hr> </th>
-                    </tr>
-                    <?php
-                        if(sizeof($posts) == 0){
-                            ?>
-                                <tr>
-                                    <td colspan="4" align="center"><b><i>No Post found</i></b></td>
-                                </tr>
-                            <?php
-                        }
-
-                        else{
-                            foreach ($posts as $post) {
+                        <tr align="center">
+                        <th>Post ID <br> <hr> </th>
+                        <th>Auhor <br> <hr> </th>
+                        <th>Posted Date <br> <hr> </th>
+                        <th>Action <br> <hr> </th>
+                        </tr>
+                        <?php
+                            if(sizeof($posts) == 0){
                                 ?>
                                     <tr>
-                                        <td><?=$post['post_id']?></td>
-                                        <td><a href="profile.php?username=<?=$post['author']?>">@<?=$post['author']?></a></td>
-                                        <td><?=date_format(new DateTime($post['date']), "Y-m-d")?></td>
-                                        <td>
-                                            <form action="../controller/manage_discussionPost_process.php" method="post">
+                                        <td colspan="4" align="center"><b><i>No Post found</i></b></td>
+                                    </tr>
+                                <?php
+                            }
+
+                            else{
+                                foreach ($posts as $post) {
+                                    ?>
+                                        <tr>
+                                            <td><?=$post['post_id']?></td>
+                                            <td><a href="profile_view.php?username=<?=$post['author']?>">@<?=$post['author']?></a></td>
+                                            <td><?=date_format(new DateTime($post['date']), "Y-m-d")?></td>
+                                            <td>
+                                                
                                                 <a href="view_single_post.php?post_id=<?=$post['post_id']?>"><input type="button" value="View"></a>
                                                 
                                                 <input type="submit" name="remove_post" value="Remove">
 
                                                 <input type="hidden" name="post_id" value="<?=$post['post_id']?>">
-                                            </form>
-                                        </td>
-                                    </tr>
-                                <?php
+                                                
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
                             }
-                        }
 
-                    ?>
+                        ?>
 
-                </table>
+                        <tr>
+                            <td align="center" colspan="4">
+                                <hr>    
+                                <input type="submit" name="remove_all" value="Remove all">
+                                <hr>
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
             </fieldset>
         </td>
     </tr>

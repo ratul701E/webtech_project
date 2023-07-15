@@ -35,7 +35,7 @@
     <title>Professional Sage | Discussion</title>
 </head>
 <body>
-    <?php require_once('topnavigationbar.php'); ?>
+    <?php require_once('top_navbar.php'); ?>
     <font face="courier"><h1 align="center">Discussion</h1></font>
     
     <table align="center">
@@ -182,7 +182,7 @@
             </td>
         </tr>
     </table>
-    <?php include 'bottom_nav.php' ?>
+    <?php include 'bottom_navbar.php' ?>
 
 
 </body>

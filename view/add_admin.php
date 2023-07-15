@@ -39,7 +39,7 @@
     <title>Add Admin</title>
 </head>
 <body>
-    <?php require_once('topnavigationbar.php'); ?>
+    <?php require_once('top_navbar.php'); ?>
 
     <table align="center"  bgcolor="#f1f1f1">
         <?php if(strlen($msg) > 0){ ?>

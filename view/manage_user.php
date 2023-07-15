@@ -46,7 +46,7 @@
 
 </head>
 <body>
-    <?php require_once('topnavigationbar.php'); ?>
+    <?php require_once('top_navbar.php'); ?>
 
     <table align="center">
         <tr>
@@ -86,73 +86,83 @@
                             <th>Action  <br><hr> </th>
                             <th>Status  <br><hr> </th>
                         </tr>
-                        <?php
-
-                            if(sizeof($users) == 0){
-                                ?>
-                                    <tr>
-                                        <td colspan="5" align="center"><b><i>No user found</i></b></td>
-                                    </tr>
-                                <?php
-                            }
-                            else{
-                                foreach($users as $temp_user){
-                                    if($temp_user['role'] == 'Admin' and $user['role'] != 'SuperAdmin') continue;
-                                    if($temp_user['role'] == 'SuperAdmin') continue;
-                                    ?> 
+                        <form action="../controller/manage_user_process.php" method="post">
+                            <?php
+                                if(sizeof($users) == 0){
+                                    ?>
                                         <tr>
-                                            <td>
-                                                <img src="../vendor/profiles/<?=$temp_user['profile_location']?>" alt="" width="30">
-                                                <br>
-                                                <a href="profile_view.php?username=<?=$temp_user['username']?>"><?=$temp_user['username']?></a>
-                                            </td>
-                                            <td><?=$temp_user['email']?></td>
-                                            <td><?=$temp_user['role']?></td>
-                                            <td>
-                                                <form action="../controller/manage_user_process.php" method="post">
-                                                <input type="hidden" name="username" value="<?=$temp_user['username']?>">
-                                                <input type="hidden" name="view" value="<?=$view?>">
-                                                <!-- <input ty pe="submit" name="update" value="Update"> -->
-                                                <?php if($temp_user['isExist'] == 'false'){
-                                                            ?>
-                                                            <input type="submit" name="restore" value="Restore"> 
-                                                            <?php
-                                                        }
-                                                        else {
-                                                            ?>
-                                                            <input type="submit" name="remove" value="Remove">
-                                                            <?php
-                                                            if($temp_user['status'] == 'banned'){
-                                                                ?>
-                                                                <input type="submit" name="unban" value="Unban"> 
-                                                                <?php
-                                                            }
-                                                            else{
-                                                                ?>
-                                                                <input type="submit" name="ban" value="Ban">
-                                                                <?php
-                                                            }  
-                                                        }
-                                                    ?>
-                                                    
-                                                </form>
-                                            </td>
-                                            <td align="center">
-                                                <?php
-                                                    if($temp_user['isExist'] == 'false') echo '<font color = "red">Removed Users</font>';
-                                                    else if($temp_user['status'] == 'invalid') echo '<font color = "orange">Invalid</font>';
-                                                    else if($temp_user['status'] == 'valid') echo '<font color = "green">Valid</font>';
-                                                    else if($temp_user['status'] == 'banned') echo '<font color = "#ff8080">Banned</font>';
-                                                    else if($temp_user['status'] == 'unverified') echo '<font color = "#ae7ef1">Unverified</font>';
-                                                ?>
-                                            </td>
-                                            
+                                            <td colspan="5" align="center"><b><i>No user found</i></b></td>
                                         </tr>
                                     <?php
                                 }
-                            }
+                                else{
+                                    foreach($users as $temp_user){
+                                        if($temp_user['role'] == 'Admin' and $user['role'] != 'SuperAdmin') continue;
+                                        if($temp_user['role'] == 'SuperAdmin') continue;
+                                        ?> 
+                                        
+                                            <tr>
+                                                <td>
+                                                    <img src="../vendor/profiles/<?=$temp_user['profile_location']?>" alt="" width="30">
+                                                    <br>
+                                                    <a href="profile_view.php?username=<?=$temp_user['username']?>"><?=$temp_user['username']?></a>
+                                                </td>
+                                                <td><?=$temp_user['email']?></td>
+                                                <td><?=$temp_user['role']?></td>
+                                                <td>
+                                                    <input type="hidden" name="username" value="<?=$temp_user['username']?>">
+                                                    <input type="hidden" name="view" value="<?=$view?>">
+                                                    <?php if($temp_user['isExist'] == 'false'){
+                                                                ?>
+                                                                <input type="submit" name="restore" value="Restore"> 
+                                                                <?php
+                                                            }
+                                                            else {
+                                                                ?>
+                                                                <input type="submit" name="remove" value="Remove">
+                                                                <?php
+                                                                if($temp_user['status'] == 'banned'){
+                                                                    ?>
+                                                                    <input type="submit" name="unban" value="Unban"> 
+                                                                    <?php
+                                                                }
+                                                                else{
+                                                                    ?>
+                                                                    <input type="submit" name="ban" value="Ban">
+                                                                    <?php
+                                                                }  
+                                                            }
+                                                        ?>
+                                                </td>
+                                                <td align="center">
+                                                    <?php
+                                                        if($temp_user['isExist'] == 'false') echo '<font color = "red">Removed Users</font>';
+                                                        else if($temp_user['status'] == 'invalid') echo '<font color = "orange">Invalid</font>';
+                                                        else if($temp_user['status'] == 'valid') echo '<font color = "green">Valid</font>';
+                                                        else if($temp_user['status'] == 'banned') echo '<font color = "#ff8080">Banned</font>';
+                                                        else if($temp_user['status'] == 'unverified') echo '<font color = "#ae7ef1">Unverified</font>';
+                                                    ?>
+                                                </td>
+                                                
+                                            </tr>
+                                        <?php
+                                    }
+                                    ?>
+                                        <tr align="center">
+                                            <td colspan="5">
+                                                <hr>
+                                                <input type="submit" name="ban_all" value="Ban All User"> &nbsp;
+                                                <input type="submit" name="unban_all" value="Unban All User"> &nbsp;
+                                                <input type="submit" name="remove_all" value="Remove All User"> &nbsp;
+                                                <input type="submit" name="restore_all" value="Restore All Deleted User">
+                                                <hr>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
 
-                        ?>
+                            ?>
+                        </form>
                     </table>
                 </fieldset>
             </td>

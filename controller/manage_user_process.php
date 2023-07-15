@@ -93,6 +93,22 @@
         );
     }
 
+    else if(isset($_POST['ban_all'])){
+        updateColumnValue('status', 'banned');
+    }
+
+    else if(isset($_POST['unban_all'])){
+        updateColumnValue('status', 'valid');
+    }
+
+    else if(isset($_POST['remove_all'])){
+        updateColumnValue('isExist', 'false');
+    }
+
+    else if(isset($_POST['restore_all'])){
+        updateColumnValue('isExist', 'true');
+    }
+
     $view = '';
     if(isset($_POST['view'])) $view = $_POST['view'];
     

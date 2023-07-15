@@ -38,7 +38,7 @@
     <title>Please Verfiy</title>
 </head>
 <body>
-    <?php require_once('topnavigationbar.php'); ?>
+    <?php require_once('top_navbar.php'); ?>
 
     <table align="center">
         <tr>
@@ -94,6 +94,6 @@
         </tr>
     </table>
 
-    <?php include_once('bottom_nav.php'); ?>
+    <?php include_once('bottom_navbar.php'); ?>
 </body>
 </html>

@@ -30,7 +30,15 @@
             return true;
         }
         return false;
+    }
 
+    function deleteAllPost(){
+        $con = dbConnection();
+        $sql = "DELETE FROM discussion_posts;";
+        if(mysqli_query($con, $sql)){
+            return true;
+        }
+        return false;
     }
 
     function getAllPosts($like=''){

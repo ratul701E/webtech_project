@@ -36,7 +36,7 @@
   <title>Manage Query</title>
 </head>
 <body>
-  <?php require_once('topnavigationbar.php'); ?>
+  <?php require_once('top_navbar.php'); ?>
   <table align="center">
     <?php if(strlen($success_msg) > 0){ ?>
         <tr align="center">

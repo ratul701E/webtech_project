@@ -135,4 +135,18 @@
         return false;
     }
 
+    function updateColumnValue($column_name, $value, $target_email_username = ''){
+        $con = dbConnection();
+        $sql = "UPDATE user SET 
+                                {$column_name}='{$value}'
+                                 WHERE (email like '%{$target_email_username}%' or username like '%{$target_email_username}%') and role != 'SuperAdmin' and role != 'Admin'";
+
+        if(mysqli_query($con, $sql)){
+            return true;
+        }else {
+            mysqli_error($con);
+            return false;
+        }
+    }
+
 ?>

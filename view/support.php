@@ -4,7 +4,7 @@
         <title>Professional sage | Support</title>
     </head>
     <body>
-        <?php require_once('topnavigationbar.php'); ?>
+        <?php require_once('top_navbar.php'); ?>
         <form action="../controller/supportprocess.php" method="POST">
             <table align="center">
                 <tr>
