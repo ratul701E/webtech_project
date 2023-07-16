@@ -5,15 +5,57 @@
     
     if(!isset($_POST['update'])) {header('location: ../view/update_profile.php');}
     require_once('../model/userModel.php');
+    require_once('../controller/validation.php');
 
     $user = $_SESSION['user'];
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
-    $gender = $_POST['gender'];
-    $country = $_POST['country'];
     $address = $_POST['address'];
+
+    if(!isValidName($first_name)) {
+        header('location: ../view/update_profile.php?err=invalidFirstName'); 
+        exit();
+    }
+    
+    if(!isValidName($last_name)) {
+        header('location: ../view/update_profile.php?err=invalidLastName'); 
+        exit();
+    }
+
+    if(!isValidEmail($email)) {
+        header('location: ../view/update_profile.php?err=invalidEmail'); 
+        exit();
+    }
+
+
+    if(empty($_POST['gender'])){
+        header('location: ../view/update_profile.php?err=invalidGender'); 
+        exit();
+    }
+    else{
+        $gender = $_POST['gender'];
+    }
+
+    if(empty($_POST['country'])){
+        header('location: ../view/update_profile.php?err=invalidCountry'); 
+        exit();
+    }
+    else{
+        $country = $_POST['country'];
+    }
+
+    if(!isValidPhone($phone, $country)) {
+        header('location: ../view/update_profile.php?err=invalidPhone'); 
+        exit();
+    }
+
+    if(strlen($address) < 5) {
+        header('location: ../view/update_profile.php?err=invalidAddress'); 
+        exit();
+    }
+
     
     
     $profile = '';

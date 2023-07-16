@@ -34,6 +34,10 @@ if (isset($_GET['err'])) {
             $msg = "Invalid email. Please provide a proper email address";
             break;
         }
+        case 'empty': {
+            $msg = "Field(s) cannot be empty";
+            break;
+        }
     }
 }
 
@@ -88,7 +92,7 @@ if (isset($_GET['success'])) {
                             <form action="../controller/get_verification_code.php" method="post">
                                 <div>
                                     <td><label for="email">Email:</label></td>
-                                    <td><input type="email" id="email" name="email" value="<?php if (isset($_SESSION['forget_password_email'])) echo $_SESSION['forget_password_email'] ?>" required> &nbsp;</td>
+                                    <td><input type="email" id="email" name="email" value="<?php if (isset($_SESSION['forget_password_email'])) echo $_SESSION['forget_password_email'] ?>"> &nbsp;</td>
                                     <td><input type="submit" value="Get OTP" /></td>
 
                                 </div>
@@ -98,19 +102,19 @@ if (isset($_GET['success'])) {
                             <tr>
                                 <div>
                                     <td><label for="new-password">New Password:</label></td>
-                                    <td><input type="password" id="new-password" name="new_password" required></td>
+                                    <td><input type="password" id="new-password" name="new_password"></td>
                                 </div>
                             </tr>
                             <tr>
                                 <div>
                                     <td><label for="confirm-password">Confirm Password:</label></td>
-                                    <td><input type="password" id="confirm-password" name="confirm_password" required></td>
+                                    <td><input type="password" id="confirm-password" name="confirm_password"></td>
                                 </div>
                             </tr>
                             <tr>
                                 <div>
                                     <td>OTP:</td>
-                                    <td><input type="text"  name="otp" required></td>
+                                    <td><input type="text"  name="otp"></td>
                                 </div>
                             </tr>
                             <tr>
@@ -118,8 +122,8 @@ if (isset($_GET['success'])) {
                             </tr>
                             <tr>
                                 <td align="center" colspan="3">
-                                    <a href="signin.php"><input type="button" name="" value="Sign In"></a>
-                                    <input type="submit" name="reset" value="Reset">
+                                    <a href="signin.php"><input type="button" name="" value="Sign In"></a> &nbsp;
+                                    <input type="submit" name="reset" value="Reset Password">
                                 </td>
                             </tr>
                         </form>

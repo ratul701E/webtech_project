@@ -4,6 +4,47 @@ if (!isset($_SESSION['logged_in'])) {
   header('location: ../view/signin.php');
 }
 
+$msg = '';
+if (isset($_GET['err'])) {
+    $err_msg = $_GET['err'];
+    switch ($err_msg) {
+        case 'invalidFirstName': {
+            $msg = "First name is invalid. Note: Alphabet & space only and at least 3 character long";
+            break;
+        }
+
+        case 'invalidLastName': {
+            $msg = "Last name is invalid. Note: Alphabet space only and at least 3 character long";
+            break;
+        }
+
+        case 'invalidEmail': {
+            $msg = "Invalid email. Please provide a proper email address";
+            break;
+        }
+
+        case 'invalidAddress': {
+            $msg = "Are your address is ok?. Please provide a details address.";
+            break;
+        }
+
+        case 'invalidGender': {
+            $msg = "A gender must be selected.";
+            break;
+        }
+
+        case 'invalidCountry': {
+            $msg = "A country must be selected.";
+            break;
+        }
+
+        case 'invalidPhone': {
+            $msg = "Your phone is invalid. Note: DO NOT INCLUDE COUNTRY CODE";
+            break;
+        }
+    }
+}
+
 $user = $_SESSION['user'];
 ?>
 
@@ -34,6 +75,13 @@ $user = $_SESSION['user'];
                   <h4><?= $user['first_name'] . ' ' . $user['last_name'] ?></h4>
                 </td>
               </tr>
+                <?php if (strlen($msg) > 0) { ?>
+                    <tr align="center">
+                        <td colspan="2">
+                            <font color="red"> <?= $msg ?></font>
+                        </td>
+                    </tr>
+                  <?php } ?>
               <tr>
                 <td><label for="firstname">First Name</label></td>
                 <td><input type="text" id="firstname" name="first_name" value="<?= $user['first_name'] ?>" required></td>
@@ -60,8 +108,8 @@ $user = $_SESSION['user'];
                   <select name="country" id="">
                     <option value="Bangladesh" <?php if ($user['country'] == 'Bangladesh') echo 'selected' ?>>Bangladesh</option>
                     <option value="India" <?php if ($user['country'] == 'India') echo 'selected' ?>>India</option>
-                    <option value="Afghanistan" <?php if ($user['country'] == 'Afghanistan') echo 'selected' ?>>Afghanistan</option>
-                    <option value="Belarus" <?php if ($user['country'] == 'Belarus') echo 'selected' ?>>Belarus</option>
+                    <option value="UK" <?php if ($user['country'] == 'UK') echo 'selected' ?>>UK</option>
+                    <option value="USA" <?php if ($user['country'] == 'USA') echo 'selected' ?>>USA</option>
                     <option value="China" <?php if ($user['country'] == 'China') echo 'selected' ?>>China</option>
                   </select>
                 </td>

@@ -14,6 +14,7 @@
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $validity = 'unverified';
+    $agreement = $_POST['agreement'];
 
 
     if(!isset($_POST['role'])) {
@@ -82,7 +83,11 @@
     }
 
     if($password != $cpassword) {
-        header('location: ../view/signup.php?err=passwordMismatch'); 
+        header('location: ../view/signup.php?err=priya'); 
+        exit();
+    }
+    if($agreement != 'agreement') {
+        header('location: ../view/signup.php?err=agreementErr'); 
         exit();
     }
 
@@ -90,6 +95,7 @@
     
     
     $profile = '';
+
 
     if($_FILES['profile']['size'] > 0){
         $profile = $_FILES['profile']['name'];

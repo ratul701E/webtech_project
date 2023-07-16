@@ -1,4 +1,5 @@
 <?php
+
 $msg = '';
 if (isset($_GET['err'])) {
     $err_msg = $_GET['err'];
@@ -60,6 +61,10 @@ if (isset($_GET['err'])) {
             $msg = "Your phone is invalid. Note: DO NOT INCLUDE COUNTRY CODE";
             break;
         }
+        case 'agreementErr': {
+            $msg = "Please check our agreement. :)";
+            break;
+        }
     }
 }
 
@@ -87,7 +92,7 @@ if (isset($_GET['err'])) {
                             <?php if (strlen($msg) > 0) { ?>
                                 <tr align="center">
                                     <td colspan="2">
-                                        <font color="red"><?= $msg ?></font>
+                                        <font color="red"> <?= $msg ?></font>
                                     </td>
                                 </tr>
                             <?php } ?>

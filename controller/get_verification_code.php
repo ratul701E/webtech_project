@@ -7,6 +7,11 @@
     if(isset($_POST['email'])){
         $email = $_POST['email'];
 
+        if(empty($email)){
+            header('location: ../view/forget_password.php?err=empty'); 
+            exit();
+        }
+        
         if(!isValidEmail($email)) {
             header('location: ../view/forget_password.php?err=invalidEmail'); 
             exit();

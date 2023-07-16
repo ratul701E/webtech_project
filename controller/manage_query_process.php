@@ -17,10 +17,19 @@
 
     if(isset($_POST['reply'])){
         $query_id = $_POST['query_id'];
-        $query = getQuery($query_id);
-
         $reply = $_POST['reply_msg'];
+
+        if(empty($reply)){
+            header('location: ../view/view_query.php?qid='.$query_id.'&err=empty');
+            exit();
+        }
+
+
+       
+        $query = getQuery($query_id);
         $user = $_SESSION['user'];
+
+        
 
         $body = $reply.' Regards '.$user['first_name'].' '.$user['last_name'].' from Professional Sage';
         $status = send_mail($query['sender_email'], 'Thanks for message our support', $body);

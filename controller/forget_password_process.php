@@ -9,18 +9,23 @@
     $cpassword = $_POST['confirm_password'];
     $otp = $_POST['otp'];
 
-    if($otp != $_SESSION['forget_password_otp']){
-        {header('location: ../view/forget_password.php?err=otpMismatch'); exit();}
+    if(empty($otp) or empty($password) or empty($cpassword)){
+        header('location: ../view/forget_password.php?err=empty'); 
+        exit();
     }
 
     if(!isValidPassword($password)) {
-        header('location: ../view/signup.php?err=shortPassword'); 
+        header('location: ../view/forget_password.php?err=shortPassword'); 
         exit();
     }
 
     if($password != $cpassword) {
-        header('location: ../view/signup.php?err=passwordMismatch'); 
+        header('location: ../view/forget_password.php?err=passwordMismatch'); 
         exit();
+    }
+
+    if($otp != $_SESSION['forget_password_otp']){
+        {header('location: ../view/forget_password.php?err=otpMismatch'); exit();}
     }
 
     $user = getUser($_SESSION['forget_password_email']);

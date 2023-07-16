@@ -61,7 +61,6 @@
     }
 
 
-
     header('location: ../view/discussion.php');
 
 ?>

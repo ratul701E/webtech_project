@@ -27,6 +27,18 @@ if ($query == null) {
     header('location: manage_query.php');
 }
 
+$msg = '';
+if (isset($_GET['err'])) {
+    $err_msg = $_GET['err'];
+    switch ($err_msg) {
+        case 'empty': {
+                $msg = "Cannot send a empty reply.";
+                break;
+        }
+    }
+}
+
+
 
 
 ?>
@@ -60,6 +72,13 @@ if ($query == null) {
                         <tr>
                             <td><br></td>
                         </tr>
+                        <?php if (strlen($msg) > 0) { ?>
+                            <tr align="center">
+                                <td colspan="2">
+                                    <font color="red"><?= $msg ?></font>
+                                </td>
+                            </tr>
+                        <?php } ?>
                         <tr>
                             <td><b>Reply</b></td>
                             <td>
