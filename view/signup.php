@@ -150,7 +150,7 @@ if (isset($_GET['err'])) {
                                         <option value="other">Other</option>
                                     </select>
                                 </td>
-                            </tr>
+                            </tr> 
                             <tr>
                                 <td>Country/Region:</td>
                                 <td>
@@ -158,11 +158,8 @@ if (isset($_GET['err'])) {
                                         <option value="">-- Select a country --</option>
                                         <option value="USA">United States of America</option>
                                         <option value="UK">United Kingdom</option>
-                                        <option value="Canada">Canada</option>
                                         <option value="Bangladesh">Bangladesh</option>
                                         <option value="India">India</option>
-                                        <option value="Afghanistan">Afghanistan</option>
-                                        <option value="Belarus">Belarus</option>
                                         <option value="China">China</option>
 
                                     </select>
