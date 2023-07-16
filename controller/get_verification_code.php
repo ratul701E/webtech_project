@@ -2,9 +2,16 @@
     session_start();
     require_once('../model/userModel.php');
     require_once('mail_sender.php');
+    require_once('../controller/validation.php');
 
     if(isset($_POST['email'])){
         $email = $_POST['email'];
+
+        if(!isValidEmail($email)) {
+            header('location: ../view/forget_password.php?err=invalidEmail'); 
+            exit();
+        }
+
         $user = getUser($email);
 
         if($user == false){

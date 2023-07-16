@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once('../model/userModel.php');
+    require_once('../controller/validation.php');
 
     if(!isset($_POST['reset'])) header('location: ../view/forget_password.php');
 
@@ -12,8 +13,15 @@
         {header('location: ../view/forget_password.php?err=otpMismatch'); exit();}
     }
 
-    if(strlen($password) < 8) {header('location: ../view/forget_password.php?err=shortPassword'); exit();}
-    if($password != $cpassword) {header('location: ../view/forget_password.php?err=passwordMismatch'); exit();}
+    if(!isValidPassword($password)) {
+        header('location: ../view/signup.php?err=shortPassword'); 
+        exit();
+    }
+
+    if($password != $cpassword) {
+        header('location: ../view/signup.php?err=passwordMismatch'); 
+        exit();
+    }
 
     $user = getUser($_SESSION['forget_password_email']);
     

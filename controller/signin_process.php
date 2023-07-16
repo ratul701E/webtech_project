@@ -8,6 +8,11 @@
      $password = $_POST['password'];
      $save = $_POST['save'];
 
+     if(empty($username) or empty($password)){
+         header('location: ../view/signin.php?err=empty');
+         exit();
+     }
+
     $status = login($username, $password);
 
      if($status){

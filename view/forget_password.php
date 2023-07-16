@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $msg = '';
 if (isset($_GET['err'])) {
     $err_msg = $_GET['err'];
@@ -8,27 +9,31 @@ if (isset($_GET['err'])) {
         case 'shortPassword': {
                 $msg = "Password length must be 8 or more long.";
                 break;
-            }
+        }
         case 'passwordMismatch': {
                 $msg = "Password and confrim password does not match";
                 break;
-            }
+        }
         case 'failed': {
                 $msg = "Password failed to change.";
                 break;
-            }
+        }
         case 'wrongEmail': {
                 $msg = "Email doesn't match to any user.";
                 break;
-            }
+        }
         case 'otpMismatch': {
                 $msg = "Wrong OTP.";
                 break;
-            }
+        }
         case 'sendFailed': {
                 $msg = "failed to send OTP.";
                 break;
-            }
+         }
+        case 'invalidEmail': {
+            $msg = "Invalid email. Please provide a proper email address";
+            break;
+        }
     }
 }
 
@@ -84,7 +89,7 @@ if (isset($_GET['success'])) {
                                 <div>
                                     <td><label for="email">Email:</label></td>
                                     <td><input type="email" id="email" name="email" value="<?php if (isset($_SESSION['forget_password_email'])) echo $_SESSION['forget_password_email'] ?>" required> &nbsp;</td>
-                                    <td><input type="submit" value="Get Verfication code" /></td>
+                                    <td><input type="submit" value="Get OTP" /></td>
 
                                 </div>
                             </form>
@@ -104,19 +109,20 @@ if (isset($_GET['success'])) {
                             </tr>
                             <tr>
                                 <div>
-                                    <td><label for="verification-code">Verification Code:</label></td>
-                                    <td><input type="text" id="verification-code" name="otp" required></td>
+                                    <td>OTP:</td>
+                                    <td><input type="text"  name="otp" required></td>
                                 </div>
                             </tr>
                             <tr>
                                 <td><br></td>
                             </tr>
                             <tr>
-                                <td align="center" colspan="2"><input type="submit" name="reset" value="Reset"></td>
+                                <td align="center" colspan="3">
+                                    <a href="signin.php"><input type="button" name="" value="Sign In"></a>
+                                    <input type="submit" name="reset" value="Reset">
+                                </td>
                             </tr>
                         </form>
-
-
                     </table>
                 </fieldset>
             </td>
