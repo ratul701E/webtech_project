@@ -16,8 +16,16 @@ if (isset($_GET['err'])) {
                 $msg = "Failed to post.";
                 break;
             }
-        case 'deleted': {
-                $msg = "Your post was deleted Successfully.";
+        case 'postFieldEmpty': {
+                $msg = "All fields must be filled when post.";
+                break;
+            }
+        case 'commentFieldEmpty': {
+                $msg = "Cannot comment empty.";
+                break;
+            }
+        case 'editFailed': {
+                $msg = "Look like youre trying to edit with empty value. Process terminated.";
                 break;
             }
     }
@@ -35,8 +43,17 @@ if (isset($_GET['success'])) {
                 $success_msg = "Your post was updated Successfully.";
                 break;
             }
+        case 'commentDeleted': {
+                $success_msg = "Your comment was deleted Successfully.";
+                break;
+            }
+        case 'deleted': {
+                $success_msg = "Your post was deleted Successfully.";
+                break;
+            }
     }
 }
+
 ?>
 
 
@@ -56,6 +73,23 @@ if (isset($_GET['success'])) {
     <table align="center">
         <tr>
             <td>
+                <center>
+                <?php if (strlen($msg) > 0) { ?>
+                    <h4 align="center">
+                        <font color="red"><?= $msg ?></font>
+                    </h4>
+                <?php } ?>
+
+                <?php if (strlen($success_msg) > 0) { ?>
+                    <h4 align="center">
+                        <font color="green"><?= $success_msg ?></font>
+                    </h4>
+                <?php } ?>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <?php
                 if (isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin' and $user['status'] != 'unverified') {
                 ?>
@@ -65,16 +99,16 @@ if (isset($_GET['success'])) {
                         </legend>
 
                         <form action="../controller/discussion_process.php" method="post">
-                            Title: <input type="text" name="title" id="" required> <br> <br>
+                            Title: <input type="text" name="title" id=""> <br> <br>
                             Body: <br>
-                            <textarea name="body" rows="7" cols="70" placeholder="Write your post here..." required></textarea>
+                            <textarea name="body" rows="7" cols="70" placeholder="Write your post here..."></textarea>
 
                             <?php
                             $domains = getAllDomains();
                             ?>
                             <br>
                             <br>
-                            <select name="domain_id" id="" required>
+                            <select name="domain_id" id="">
                                 <option value="">-- Select a domain --</option>
                                 <?php
                                 foreach ($domains as $domain) {
@@ -90,17 +124,6 @@ if (isset($_GET['success'])) {
 
                             <input type="submit" name="post" value="Post">
                             <br>
-                            <?php if (strlen($msg) > 0) { ?>
-                                <h3 align="center">
-                                    <font color="red"><?= $msg ?></font>
-                                </h3>
-                            <?php } ?>
-
-                            <?php if (strlen($success_msg) > 0) { ?>
-                                <h3 align="center">
-                                    <font color="green"><?= $success_msg ?></font>
-                                </h3>
-                            <?php } ?>
 
                         </form>
                     </fieldset>
@@ -132,8 +155,9 @@ if (isset($_GET['success'])) {
                         $posts = getCommentedAllPosts($user['username']);
                     }
                 } else $posts = getAllPosts();
-
+                
                 foreach ($posts as $post) {
+                    $author_data = getUser($post['author']);
                 ?>
                     <fieldset>
 
@@ -146,20 +170,25 @@ if (isset($_GET['success'])) {
                             </font>
                         </legend>
 
+                        <img src="../vendor/profiles/<?= $author_data['profile_location'] ?>" alt="" width="40"> <br>
+                        <b><?=  $author_data['first_name'].' '.$author_data['last_name'] ?></b>
 
                         <?php
                         if (isset($_SESSION['logged_in']) and $user['username'] == $post['author']) {
                         ?>
                             <form action="edit_post.php" method="post">
-                                <p align="right"><input type="submit" name="edit" value="Edit"></p>
+                                <br>
+                                <input type="submit" name="edit" value="Edit Post">
                                 <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
                             </form>
                         <?php
                         }
                         ?>
+                        
                         <p><i><b>Last Modified:</b> <?= date_format(new DateTime($post['last_edited']), "D h:i A") ?></i></p>
+                        <hr>
                         <p><b>Domain:</b> <?= getDomainName($post['domain']) ?> </p>
-                        <p><b><?= $post['title'] ?></b></p>
+                        <p><b>Title: <?= $post['title'] ?></b></p>
                         <p>
                             <?= $post['body'] ?>
                         </p>
@@ -169,7 +198,7 @@ if (isset($_GET['success'])) {
                         if (isset($_SESSION['logged_in']) and $user['role'] != 'Admin' and $user['role'] != 'SuperAdmin' and $user['status'] != 'unverified') {
                         ?>
                             <form action="../controller/discussion_process.php" method="post">
-                                Write a comment <br> <textarea name="msg" id="" cols="30" rows="3" required></textarea>
+                                Write a comment <br> <textarea name="msg" id="" cols="30" rows="3"></textarea>
                                 <input type="hidden" name="post_id" value="<?= $post['post_id'] ?>">
                                 &nbsp; <input type="submit" name="comment" value="Comment" id="">
                             </form>
@@ -188,11 +217,30 @@ if (isset($_GET['success'])) {
                         ?>
                             <table>
                                 <tr>
-                                    <td><b><a href="profile_view.php?username=<?= $comment['username'] ?>"> <?php if (isset($_SESSION['logged_in']) and $comment['username'] == $user['username']) echo 'me';
-                                                                                                            else echo '@' . $comment['username']; ?> </a></b></td>
+                                    <td>
+                                        <b><a href="profile_view.php?username=<?= $comment['username'] ?>"> 
+                                        <?php 
+                                            if ( isset($_SESSION['logged_in']) and $comment['username'] == $user['username']) echo 'me';
+                                            else echo '@' . $comment['username']; 
+                                        ?> 
+                                        </a></b>
+                                    </td>
                                     <td> &nbsp;<?= $comment['comment'] ?></td>
                                     <td> • <i><?= date_format(new DateTime($comment['date']), "D h:i a") ?></i></td>
-                                    </tr`>
+                                    <?php
+                                        if($comment['username'] == $user['username']){
+                                            ?>
+                                                <td>
+                                                    &nbsp;&nbsp; &nbsp;&nbsp;
+                                                    <form action="../controller/discussion_process.php" method="post">
+                                                        <input type="submit" name="delete_comment" value="Delete">
+                                                        <input type="hidden" name="comment_id" value="<?=$comment['comment_id']?>">
+                                                    </form>
+                                                </td>
+                                            <?php
+                                        }
+                                    ?>
+                                </tr`>
                             </table>
                         <?php
                         }

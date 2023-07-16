@@ -15,7 +15,24 @@
         $post_id = $_POST['post_id'];
         $comment = $_POST['msg'];
 
+        if(empty($comment)){
+            header('location: ../view/discussion.php?err=commentFieldEmpty');
+            exit();
+        }
+
         addComment($post_id, $username, $comment);
+
+    }
+
+    if(isset($_POST['delete_comment'])){
+        $comment_id = $_POST['comment_id'];
+
+        $status = deleteComment($comment_id);
+
+        if($status){
+            header('location: ../view/discussion.php?success=commentDeleted');
+            exit();
+        }
 
     }
 
@@ -25,6 +42,12 @@
         $body = $_POST['body'];
         $domain_id = $_POST['domain_id'];
         $author = $user['username'];
+
+        if(empty($title) or empty($body) or empty($domain_id)){
+            header('location: ../view/discussion.php?err=postFieldEmpty');
+            exit();
+        }
+        
 
         $status = addPost($author, $domain_id, $title, $body);
 
