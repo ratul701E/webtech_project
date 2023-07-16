@@ -69,14 +69,11 @@ function isValidPassword($password){
 
 function isValidPhone($phone, $region){
     $regions = array(
-        'USA' => 1,
-        'USA' => 1,
-        'USA' => 1,
-        'USA' => 1,
-        'USA' => 1,
-        'USA' => 1,
-        'USA' => 1,
-        'USA' => 1
+        'USA' => 11,
+        'UK' => 11,
+        'Bangladesh' =>11,
+        'India' =>11,
+        'china' =>11
     );
 
     if(strlen($phone) != $regions[$region]) return false;
