@@ -94,7 +94,7 @@ if (isset($_GET['err'])) {
 
 
                             <tr>
-                                <td><label for="signup-as"><b>Signup As:</b></label></td>
+                                <td><label for="signup-as"><font color="red"><sup>*</sup></font>Signup As:</label></td>
                                 <td>
                                     <table>
                                         <tr>
@@ -117,31 +117,31 @@ if (isset($_GET['err'])) {
                                 </td>
                             </tr>
                             <tr>
-                                <td>Username</td>
+                                <td><font color="red"><sup>*</sup></font>Username</td>
                                 <td><input type="text" id="EnterUsername" name="username"></td>
                             </tr>
                             <tr>
-                                <td>First Name:</td>
+                                <td><font color="red"><sup>*</sup></font>First Name:</td>
                                 <td><input type="text" id="first-name" name="first_name"></td>
                             </tr>
                             <tr>
-                                <td>Last Name:</td>
+                                <td><font color="red"><sup>*</sup></font>Last Name:</td>
                                 <td><input type="text" id="last-name" name="last_name"></td>
                             </tr>
 
                             <tr>
-                                <td>Email</td>
+                                <td><font color="red"><sup>*</sup></font>Email</td>
                                 <td><input type="email" name="email" id=""></td>
                             </tr>
                             <tr>
-                                <td>Phone Number:</td>
+                                <td><font color="red"><sup>*</sup></font>Phone Number:</td>
                                 <td>
                                     <i> <font color="red" size="2">*without country code</font></i> <br>
                                     <input type="number" id="phone" name="phone">
                                 </td>
                             </tr>
                             <tr>
-                                <td>Gender:</td>
+                                <td><font color="red"><sup>*</sup></font>Gender:</td>
                                 <td>
                                     <select id="gender" name="gender" >
                                         <option value="">-- Select Gender --</option>
@@ -152,7 +152,7 @@ if (isset($_GET['err'])) {
                                 </td>
                             </tr> 
                             <tr>
-                                <td>Country/Region:</td>
+                                <td><font color="red"><sup>*</sup></font>Country/Region:</td>
                                 <td>
                                     <select id="country" name="country">
                                         <option value="">-- Select a country --</option>
@@ -167,17 +167,17 @@ if (isset($_GET['err'])) {
                             </tr>
 
                             <tr>
-                                <td>Address</td>
+                                <td><font color="red"><sup>*</sup></font>Address</td>
                                 <td><textarea name="address" id="" cols="30" rows="3"></textarea></td>
                             </tr>
 
                             <tr>
-                                <td>Password</td>
+                                <td><font color="red"><sup>*</sup></font>Password</td>
                                 <td><input type="password" name="password" id=""></td>
                             </tr>
 
                             <tr>
-                                <td>Confirm Password</td>
+                                <td><font color="red"><sup>*</sup></font>Confirm Password</td>
                                 <td><input type="password" name="cpassword" id=""></td>
                             </tr>
 
