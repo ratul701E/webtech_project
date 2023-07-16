@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $msg = '';
 if (isset($_GET['err'])) {
@@ -66,6 +67,10 @@ if (isset($_GET['err'])) {
             break;
         }
     }
+}
+
+if(isset($_SESSION['logged_in'])){
+    header('location: profile.php');
 }
 
 ?>

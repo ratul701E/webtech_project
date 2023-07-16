@@ -228,7 +228,7 @@ if (isset($_GET['success'])) {
                                     <td> &nbsp;<?= $comment['comment'] ?></td>
                                     <td> • <i><?= date_format(new DateTime($comment['date']), "D h:i a") ?></i></td>
                                     <?php
-                                        if($comment['username'] == $user['username']){
+                                        if(isset($_SESSION['logged_in']) and $comment['username'] == $user['username']){
                                             ?>
                                                 <td>
                                                     &nbsp;&nbsp; &nbsp;&nbsp;

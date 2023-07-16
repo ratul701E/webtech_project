@@ -51,6 +51,10 @@ if (isset($_GET['success'])) {
             }
     }
 }
+
+if(isset($_SESSION['logged_in'])){
+  header('location: profile.php');
+}
 ?>
 
 

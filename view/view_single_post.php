@@ -6,6 +6,7 @@ if (!isset($_SESSION['logged_in'])) {
 }
 require_once('../model/discussion_postsModel.php');
 require_once('../model/domainsModel.php');
+require_once('../model/userModel.php');
 require_once('../model/discussion_commentsModel.php');
 
 if (!isset($_GET['post_id'])) {
@@ -16,6 +17,7 @@ if (!isset($_GET['post_id'])) {
 $post_id = $_GET['post_id'];
 $post = getPost($post_id);
 $user = $_SESSION['user'];
+$author_data = getUser($post['author']);
 
 ?>
 
@@ -34,16 +36,20 @@ $user = $_SESSION['user'];
             <td>
                 <fieldset>
                     <legend align="center">
-                        <font size="5">Posted by <a href="profile_view.php?username=<?= $post['author'] ?>"> <?= $post['author'] ?> </a> &#x2022; <?= date_format(new DateTime($post['date']), "D H:i A") ?> </font>
+                        <font size="5">Posted by <a href="profile_view.php?username=<?= $post['author'] ?>"> <?= $post['author'] ?> </a> &#x2022; <?= date_format(new DateTime($post['date']), "D h:i A") ?> </font>
                     </legend>
-                    <p><i>Last Modified: <?= date_format(new DateTime($post['last_edited']), "D H:i A") ?></i></p>
+
+                    <img src="../vendor/profiles/<?= $author_data['profile_location'] ?>" alt="" width="40"> <br>
+                    <b><?=  $author_data['first_name'].' '.$author_data['last_name'] ?></b>
+
+                    <p><i>Last Modified: <?= date_format(new DateTime($post['last_edited']), "D h:i A") ?></i></p>
+                    <hr>
                     <p><b>Domain:</b> <?= getDomainName($post['domain']) ?> </p>
                     <p><b><?= $post['title'] ?></b></p>
                     <p>
                         <?= $post['body'] ?>
                     </p>
                     <hr>
-                    <br>
                     <br>
 
                     <?php
