@@ -1,5 +1,6 @@
 <?php
      if(!isset($_POST['submit'])) {header('location: support.php');}
+     
      require_once('../model/queryModel.php');
      require_once('../controller/validation.php');
 

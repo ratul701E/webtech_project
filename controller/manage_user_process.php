@@ -109,6 +109,12 @@
         updateColumnValue('isExist', 'true');
     }
 
+    else if(isset($_POST['update_user'])){
+        $username = $_POST['username'];
+        header('location: ../view/update_profile.php?username='.$username);
+        exit();
+    }
+
     $view = '';
     if(isset($_POST['view'])) $view = $_POST['view'];
     

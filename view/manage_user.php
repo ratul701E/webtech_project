@@ -121,6 +121,7 @@ if (isset($_POST['search'])) {
                                         <td>
                                             <input type="hidden" name="username" value="<?= $temp_user['username'] ?>">
                                             <input type="hidden" name="view" value="<?= $view ?>">
+                                            <input type="submit" name="update_user" value="Update">
                                             <?php if ($temp_user['isExist'] == 'false') {
                                             ?>
                                                 <input type="submit" name="restore" value="Restore">
