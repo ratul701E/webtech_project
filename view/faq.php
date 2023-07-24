@@ -11,6 +11,7 @@
 
 <head>
     <title>Progessional Sage | FAQ</title>
+    <link rel="stylesheet" type="text/css" href="faq.css">
 </head>
 
 <body>

@@ -1,0 +1,106 @@
+/* Global Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: blanchedalmond;
+    margin: 50;
+    padding: 90;
+}
+
+h3 {
+    color: cyan;
+}
+
+b {
+    color: #0066cc;
+}
+
+i {
+    color: cyan;
+}
+
+/* Form Styles */
+
+table {
+    width: 40%;
+    background-color: #23242a;
+}
+
+table td {
+    padding: 10px;
+    
+}
+
+form {
+    width: 500px;
+    margin: 30px auto;
+    border: 2px solid #40E0D0;
+    padding: 15px;
+    background-color:cyan;
+}
+
+legend {
+    font-size: 24px;
+    color: #40E0D0;
+    text-align: center;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #40E0D0;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0052b3;
+    color: #fff;
+}
+
+font sup {
+    color: red;
+}
+
+font color.red {
+    color: red;
+}
+
+font color.cyan {
+    color: cyan;
+}
+
+i font.color.red {
+    color: red;
+}
+
+i font.color.cyan {
+    color: cyan;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 500px) {
+    form {
+        width: 90%;
+    }
+}

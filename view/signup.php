@@ -69,6 +69,7 @@ if (isset($_GET['err'])) {
 
 <head>
     <title>Professional Sage | Signup</title>
+    <link rel="stylesheet" type="text/css" href="signup.css">
 </head>
 
 <body>
@@ -79,7 +80,7 @@ if (isset($_GET['err'])) {
             <td>
                 <fieldset>
                     <legend align='center'>
-                        <h3>Account Signup</h3>
+                        <h3 style="color: cyan;">Account Signup</h3> <!-- Added text color cyan -->
                     </legend>
                     <table cellpadding="3" align="center">
                         <form action="../controller/singup_process.php" method="POST" enctype="multipart/form-data">
@@ -91,7 +92,6 @@ if (isset($_GET['err'])) {
                                     </td>
                                 </tr>
                             <?php } ?>
-
 
                             <tr>
                                 <td><label for="signup-as"><font color="red"><sup>*</sup></font>Signup As:</label></td>
@@ -143,14 +143,14 @@ if (isset($_GET['err'])) {
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Gender:</td>
                                 <td>
-                                    <select id="gender" name="gender" >
+                                    <select id="gender" name="gender">
                                         <option value="">-- Select Gender --</option>
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="other">Other</option>
                                     </select>
                                 </td>
-                            </tr> 
+                            </tr>
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Country/Region:</td>
                                 <td>
@@ -161,7 +161,6 @@ if (isset($_GET['err'])) {
                                         <option value="Bangladesh">Bangladesh</option>
                                         <option value="India">India</option>
                                         <option value="China">China</option>
-
                                     </select>
                                 </td>
                             </tr>
@@ -198,7 +197,7 @@ if (isset($_GET['err'])) {
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <input type="submit" name="signup" value="Sign Up" >
+                                    <input type="submit" name="signup" value="Sign Up">
                                 </td>
                             </tr>
                             <tr>
@@ -216,3 +215,5 @@ if (isset($_GET['err'])) {
 </body>
 
 </html>
+
+

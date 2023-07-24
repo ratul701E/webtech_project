@@ -21,8 +21,9 @@
             <td><a href=""></a></td>
         </tr>
     </table>
-    <footer>
-        <p align="center">&copy; 2023 Professional Sage. All rights</p>
-    </footer>
-
 </fieldset>
+<footer>
+    <div class="bottom-navbar">
+        <p align="center">&copy; 2023 Professional Sage. All rights</p>
+    </div>
+</footer>

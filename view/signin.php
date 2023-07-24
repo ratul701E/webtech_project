@@ -61,7 +61,9 @@ if (isset($_GET['success'])) {
 
 <head>
     <title>Professional Sage | Signin</title>
+    <link rel="stylesheet" type="text/css" href="signin.css">
 </head>
+
 
 <body>
     <?php require_once('top_navbar.php'); ?>
@@ -93,36 +95,41 @@ if (isset($_GET['success'])) {
                             <?php } ?>
 
                             <tr>
-                                <td>Username/Email</td>
-                                <td><input type="text" name="username"></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td><input type="password" name="password"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"><input type="checkbox" name="save" value="yes" checked>Save credentials</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="right"><input type="submit" name="signin" value="Sign In" id=""></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" align="right">
-                                    <hr>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Not a member? <a href="signup.php">Singup here</a> </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2"> <a href="forget_password.php">Forget Password</a> </td>
-                            </tr>
+                                <td style="color: skyblue;">Username/Email</td>
+                                <td><input type="text" name="username"></td></tr>
+                                <tr>
+                                    <td style="color: skyblue;">Password</td>
+                                    <td><input type="password" name="password"></td>
+                                </tr>
+                                <tr>
+                                <td colspan="2" style="color: red;"><input type="checkbox" name="save" value="yes" checked>Save credentials</td>
+                                </tr>
+                                <tr>
+                                <tr>
+                                    <td colspan="2" align="right"><input type="submit" name="signin" value="Sign In" id="" style="color: black;font-weight: bold;"></td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" align="right">
+                                        <hr>
+                                     </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="color: cyan;">Not a member? <a href="signup.php"style="color: cyan;">Signup here</a></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td colspan="2" style="color: cyan;"> <a href="forget_password.php" style="color: cyan;">Forget Password</a></td>
+                                    </tr>
+
                         </table>
                     </form>
                 </fieldset>
+            
             </td>
         </tr>
     </table>
+
     <?php include_once('bottom_navbar.php'); ?>
 </body>
 

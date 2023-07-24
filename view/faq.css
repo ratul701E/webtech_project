@@ -1,0 +1,129 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: wheat;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color:cyan;
+}
+
+/* Container Styles */
+div {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Fieldset Styles */
+fieldset {
+    border: 2px solid skyblue;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #23242a;
+}
+
+legend {
+    font-size: 24px;
+    color: #40E0D0;
+    text-align: center;
+}
+
+/* Support Options List Styles */
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Question and Answer Styles */
+h4 {
+    color: red;
+    margin-bottom: 10px;
+}
+
+p {
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* Text color for links in the fieldset */
+fieldset a {
+    color: cyan; /* Change to your desired text color */
+}
+
+/* Text color for links on hover in the fieldset */
+fieldset a:hover {
+    color: #00FFFF; /* Change to your desired text color on hover */
+}
+
+/* Text color for "Username/Email" and "Password" labels in the form */
+fieldset td[style="color: skyblue;"] {
+    color: #FFA500; /* Change to your desired text color */
+}
+
+/* Text color for the "Not a member?" and "Forget Password" links */
+fieldset a[style="color: cyan;"] {
+    color: #FF4500; /* Change to your desired text color */
+}
+
+/* Text color for success and error messages */
+font[color="red"], font[color="green"] {
+    color: #FF0000; /* Change to your desired text color for error messages */
+                   /* Change to your desired text color for success messages */
+}
+
+/* Text color for the headings in the second fieldset */
+fieldset legend h3 {
+    color:cyan; /* Change to your desired text color for headings */
+}
+
+/* Text color for the Q&A section */
+fieldset div h4 {
+    color: #FF00FF; /* Change to your desired text color for question headings */
+}
+
+/* Text color for the answers in the Q&A section */
+fieldset div p {
+    color: #FF1493; /* Change to your desired text color for answers */
+}
+
+
+/* Today's date style */
+fieldset b {
+    color: #00FFFF; /* Add your desired color code here */
+}
+
+/* Sign-in button style */
+fieldset input[type="button"],
+fieldset input[type="submit"] {
+    border: none;
+    outline: none;
+    padding: 11px 25px;
+    background: #40E0D0;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    color:white;
+}
+
+fieldset input[type="button"]:hover,
+fieldset input[type="submit"]:hover {
+    background-color: cyan;
+}
+
+/* User role style */
+fieldset b {
+    color: cyan;
+}
+
+/* User profile image style */
+fieldset img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
