@@ -4,7 +4,60 @@ if (!isset($_SESSION['logged_in'])) {
   header('location: ../view/signin.php');
 }
 
+require_once('../model/userModel.php');
+
+$msg = '';
+if (isset($_GET['err'])) {
+  $err_msg = $_GET['err'];
+  switch ($err_msg) {
+    case 'invalidFirstName': {
+        $msg = "First name is invalid. Note: Alphabet & space only and at least 3 character long";
+        break;
+      }
+
+    case 'invalidLastName': {
+        $msg = "Last name is invalid. Note: Alphabet space only and at least 3 character long";
+        break;
+      }
+
+    case 'invalidEmail': {
+        $msg = "Invalid email. Please provide a proper email address";
+        break;
+      }
+
+    case 'invalidAddress': {
+        $msg = "Are your address is ok?. Please provide a details address.";
+        break;
+      }
+
+    case 'invalidGender': {
+        $msg = "A gender must be selected.";
+        break;
+      }
+
+    case 'invalidCountry': {
+        $msg = "A country must be selected.";
+        break;
+      }
+
+    case 'invalidPhone': {
+        $msg = "Your phone is invalid. Note: DO NOT INCLUDE COUNTRY CODE";
+        break;
+      }
+    case 'invalidFileFormat': {
+        $msg = "Invalid File format in profile. Only image are allowed.";
+        break;
+      }
+  }
+}
+
 $user = $_SESSION['user'];
+
+if (isset($_GET['username']) and ($user['role'] == 'Admin' or $User['role' == 'SuperAdmin'])) {
+  $current_user = getUser($_GET['username']);
+} 
+else $current_user = $_SESSION['user'];
+
 ?>
 
 <!DOCTYPE html>
@@ -22,68 +75,84 @@ $user = $_SESSION['user'];
       <td>
         <fieldset>
           <legend align="center">
-            <h3>Update Profile @<?= $user['username'] ?></h3>
+            <h3>Update Profile @<?= $current_user['username'] ?></h3>
           </legend>
           <form action="../controller/update_profile_process.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="username" value=<?=$current_user['username']?>>
+            <!-- for admin update user -->
+            <?php 
+              if(isset($_GET['username'])){
+                ?>
+                  <input type="hidden" name="admin_updating">
+                <?php
+              } 
+            ?>
             <table align="center">
               <tr align="center">
-                <td colspan="2"><img src="../vendor/profiles/<?= $user['profile_location'] ?>" alt="../vendor/profiles/deafult.jpg" width="200"></td>
+                <td colspan="2"><img src="../vendor/profiles/<?= $current_user['profile_location'] ?>" alt="../vendor/profiles/deafult.jpg" width="200"></td>
               </tr>
               <tr align="center">
                 <td colspan="2">
-                  <h4><?= $user['first_name'] . ' ' . $user['last_name'] ?></h4>
+                  <h4><?= $current_user['first_name'] . ' ' . $current_user['last_name'] ?></h4>
                 </td>
               </tr>
+              <?php if (strlen($msg) > 0) { ?>
+                <tr align="center">
+                  <td colspan="2">
+                    <font color="red"> <?= $msg ?></font>
+                  </td>
+                </tr>
+              <?php } ?>
               <tr>
                 <td><label for="firstname">First Name</label></td>
-                <td><input type="text" id="firstname" name="first_name" value="<?= $user['first_name'] ?>" required></td>
+                <td><input type="text" id="firstname" name="first_name" value="<?= $current_user['first_name'] ?>" required></td>
               </tr>
               <tr>
                 <td><label for="lastname">Last Name</label></td>
-                <td><input type="text" id="lastname" name="last_name" value="<?= $user['last_name'] ?>" required></td>
+                <td><input type="text" id="lastname" name="last_name" value="<?= $current_user['last_name'] ?>" required></td>
               </tr>
               <tr>
                 <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" name="email" value="<?= $user['email'] ?>" required></td>
+                <td><input type="email" id="email" name="email" value="<?= $current_user['email'] ?>" required></td>
               </tr>
               <tr>
                 <td><label for="mobile">Mobile</label></td>
-                <td><input type="tel" id="mobile" name="phone" value="<?= $user['phone'] ?>" required></td>
+                <td><input type="tel" id="mobile" name="phone" value="<?= $current_user['phone'] ?>" required></td>
               </tr>
               <tr>
                 <td>Address</td>
-                <td><textarea name="address" id="" cols="30" rows="3" required><?= $user['address'] ?></textarea></td>
+                <td><textarea name="address" id="" cols="30" rows="3" required><?= $current_user['address'] ?></textarea></td>
               </tr>
               <tr>
                 <td>Country/Region:</td>
                 <td>
                   <select name="country" id="">
-                    <option value="Bangladesh" <?php if ($user['country'] == 'Bangladesh') echo 'selected' ?>>Bangladesh</option>
-                    <option value="India" <?php if ($user['country'] == 'India') echo 'selected' ?>>India</option>
-                    <option value="Afghanistan" <?php if ($user['country'] == 'Afghanistan') echo 'selected' ?>>Afghanistan</option>
-                    <option value="Belarus" <?php if ($user['country'] == 'Belarus') echo 'selected' ?>>Belarus</option>
-                    <option value="China" <?php if ($user['country'] == 'China') echo 'selected' ?>>China</option>
+                    <option value="Bangladesh" <?php if ($current_user['country'] == 'Bangladesh') echo 'selected' ?>>Bangladesh</option>
+                    <option value="India" <?php if ($current_user['country'] == 'India') echo 'selected' ?>>India</option>
+                    <option value="UK" <?php if ($current_user['country'] == 'UK') echo 'selected' ?>>United Kingdom</option>
+                    <option value="USA" <?php if ($current_user['country'] == 'USA') echo 'selected' ?>>United States of America</option>
+                    <option value="China" <?php if ($current_user['country'] == 'China') echo 'selected' ?>>China</option>
                   </select>
                 </td>
               </tr>
               <tr>
                 <td><label>Gender</label></td>
                 <td>
-                  <input type="radio" id="male" name="gender" value="male" <?php if ($user['gender'] == 'male') echo 'checked' ?> required>
+                  <input type="radio" id="male" name="gender" value="male" <?php if ($current_user['gender'] == 'male') echo 'checked' ?> required>
                   <label for="male">Male</label>
-                  <input type="radio" id="female" name="gender" value="female" <?php if ($user['gender'] == 'female') echo 'checked' ?> required>
+                  <input type="radio" id="female" name="gender" value="female" <?php if ($current_user['gender'] == 'female') echo 'checked' ?> required>
                   <label for="female">Female</label>
-                  <input type="radio" id="other" name="gender" value="other" <?php if ($user['gender'] == 'other') echo 'checked' ?> required>
+                  <input type="radio" id="other" name="gender" value="other" <?php if ($current_user['gender'] == 'other') echo 'checked' ?> required>
                   <label for="other">Other</label>
                 </td>
               </tr>
               <tr>
                 <td>Update profile Photo</td>
-                <td><input type="file" name="profile" accept="image/*"></td>
+                <td><input type="file" name="profile"></td>
               </tr>
               <tr>
                 <td align="right" colspan="2">
-                  <a href="profile.php?username=<?= $user['username'] ?>"><input type="button" value="Back"></a>
+                  <a href="profile.php?username=<?= $current_user['username'] ?>"><input type="button" value="Back"></a>
                   <input type="submit" name="update" value="Update">
                 </td>
               </tr>

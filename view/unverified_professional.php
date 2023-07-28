@@ -31,6 +31,10 @@ if (isset($_GET['success'])) {
 
 $user = $_SESSION['user'];
 
+if(!($user['role'] == 'Professional' and $user['status'] == 'invalid')){
+    header('location: profile.php');
+}
+
 
 ?>
 

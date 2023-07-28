@@ -19,9 +19,7 @@
         <tr>
             <td>
                 <b>Today: </b>
-                <?php
-                    echo date("l");
-                ?>
+                <?= date("l"); ?>
                 <td>&nbsp;&nbsp;</td>
             </td>
             <?php

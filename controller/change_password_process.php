@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once('../model/userModel.php');
+    require_once('../controller/validation.php');
+
     if(!isset($_SESSION['logged_in']) ) header('location: signin.php');
     if(!isset($_POST['change_password'])) header('location: ../view/profile.php?username='.$user['username']); 
 
@@ -10,16 +12,23 @@
     $new_password = $_POST['new_password'];
     $cnew_password = $_POST['confirm_new_password'];
 
+    if(empty($old_password) or empty($new_password) or empty($cnew_password)){
+        header('location: ../view/change_password.php?err=empty'); 
+        exit();
+    }
+
     if($old_password != $user['password']){
         header('location: ../view/change_password.php?err=oldPasswordMismatch'); 
+        exit();
+    }
+    if(!isValidPassword($new_password)) {
+        header('location: ../view/change_password.php?err=shortPassword'); 
         exit();
     }
     if($new_password != $cnew_password){
         header('location: ../view/change_password.php?err=newPasswordMismatch'); 
         exit();
     }
-    if(strlen($new_password) < 8) {header('location: ../view/change_password.php?err=shortPassword'); exit();}
-
     $status = updateUser(
         $user['username'],
         $user['username'],

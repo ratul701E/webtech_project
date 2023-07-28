@@ -54,7 +54,7 @@ function isValidName($name){
     for ($i = 0; $i < strlen($name); $i++) {
         $character = $name[$i];
 
-        if (!ctype_alpha($character) && $character !== ' ' && $character !== ' ') {
+        if (!ctype_alpha($character) && $character !== ' ' && $character !== '.') {
             return false;
         }
     }
@@ -77,8 +77,23 @@ function isValidPhone($phone, $region){
     );
 
     if(strlen($phone) != $regions[$region]) return false;
+    $allowedCharacters = '0123456789';
+
+    for ($i = 0; $i < strlen($phone); $i++) {
+        $character = $phone[$i];
+
+        if (strpos($allowedCharacters, $character) === false) {
+            return false;
+        }
+    }
     
     return true;
+}
+
+function isValidFile($type, $ecxpected_type){
+    $actual_type = explode('/', $type)[0];
+    if($actual_type === $ecxpected_type) return true;
+    return false;
 }
 
 ?>

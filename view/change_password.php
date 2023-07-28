@@ -24,6 +24,10 @@ if (isset($_GET['err'])) {
         $msg = "Password and confrim password does not match";
         break;
       }
+    case 'empty': {
+        $msg = "Filed(s) cannot be empty";
+        break;
+      }
   }
 }
 
@@ -57,15 +61,15 @@ if (isset($_GET['err'])) {
               <?php } ?>
               <tr>
                 <td><label for="oldPassword">Old Password</label></td>
-                <td><input type="password" id="oldPassword" name="old_password" required></td>
+                <td><input type="password" id="oldPassword" name="old_password" ></td>
               </tr>
               <tr>
                 <td><label for="newPassword">New Password</label></td>
-                <td><input type="password" id="newPassword" name="new_password" required></td>
+                <td><input type="password" id="newPassword" name="new_password" ></td>
               </tr>
               <tr>
                 <td><label for="confirmNewPassword">Confirm New Password</label></td>
-                <td><input type="password" id="confirmNewPassword" name="confirm_new_password" required></td>
+                <td><input type="password" id="confirmNewPassword" name="confirm_new_password" ></td>
               </tr>
               <tr>
                 <td colspan="2" align="right">

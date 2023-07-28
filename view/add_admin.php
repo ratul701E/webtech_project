@@ -29,6 +29,36 @@ if (isset($_GET['err'])) {
                 $msg = "Something went wrong. Please try agian";
                 break;
             }
+        case 'invalidUsername': {
+                $msg = "The username is invalid. Note: Alpahbets and underscore only and at least 4 character long";
+                break;
+            }
+        case 'invalidFirstName': {
+                $msg = "First name is invalid. Note: Alphabet & space only and at least 3 character long";
+                break;
+            }
+
+        case 'invalidLastName': {
+                $msg = "Last name is invalid. Note: Alphabet space only and at least 3 character long";
+                break;
+            }
+
+        case 'invalidEmail': {
+                $msg = "Invalid email. Please provide a proper email address";
+                break;
+            }
+        case 'invalidPhone': {
+                $msg = "Your phone is invalid. Note: DO NOT INCLUDE COUNTRY CODE";
+                break;
+            }
+            case 'invalidAddress': {
+                $msg = "Are your address is ok?. Please provide a details address.";
+                break;
+            }
+            case 'invalidPassword': {
+                $msg = "Password at least 8 character long.";
+                break;
+            }
     }
 }
 $success_msg = '';
@@ -53,8 +83,7 @@ if (isset($_GET['success'])) {
 
 <body>
     <?php require_once('top_navbar.php'); ?>
-
-    <table align="center" bgcolor="#f1f1f1">
+    <center>
         <?php if (strlen($msg) > 0) { ?>
             <tr align="center">
                 <td colspan="2">
@@ -70,6 +99,9 @@ if (isset($_GET['success'])) {
                 </td>
             </tr>
         <?php } ?>
+    </center>
+
+    <table align="center" bgcolor="#f1f1f1">
         <tr>
             <td>
                 <fieldset>
@@ -78,28 +110,24 @@ if (isset($_GET['success'])) {
                         <table cellspacing="0" cellpadding="5">
                             <tr>
                                 <td bgcolor="#AED6F1  "><strong>Username:</strong></td>
-                                <td><input type="text" id="username" name="username" required></td>
+                                <td><input type="text" id="username" name="username"></td>
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>First Name:</strong></td>
-                                <td><input type="text" id="first-name" name="first_name" required></td>
+                                <td><input type="text" id="first-name" name="first_name"></td>
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>Last Name:</strong></td>
-                                <td><input type="text" id="last-name" name="last_name" required></td>
+                                <td><input type="text" id="last-name" name="last_name"></td>
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>Email Address:</strong></td>
-                                <td><input type="email" id="email" name="email" required></td>
-                            </tr>
-                            <tr>
-                                <td bgcolor="#AED6F1 "><strong>Phone Number:</strong></td>
-                                <td><input type="tel" id="phone" name="phone" required></td>
+                                <td><input type="email" id="email" name="email"></td>
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>Gender:</strong></td>
                                 <td>
-                                    <select id="gender" name="gender" required>
+                                    <select id="gender" name="gender">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                         <option value="other">Other</option>
@@ -108,15 +136,31 @@ if (isset($_GET['success'])) {
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>Country/Region:</strong></td>
-                                <td><input type="text" id="country" name="country" required></td>
+                                <td>
+                                    <select id="country" name="country">
+                                        <option value="USA">United States of America</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="Bangladesh">Bangladesh</option>
+                                        <option value="India">India</option>
+                                        <option value="China">China</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                
+                                <td bgcolor="#AED6F1 "><strong>Phone Number:</strong></td>
+                                <td>
+                                    <i> <font color="red" size="2">*without country code</font></i> <br>
+                                    <input type="tel" id="phone" name="phone">
+                                </td>
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>Address:</strong></td>
-                                <td><input type="text" id="address" name="address" required></td>
+                                <td><textarea name="address" id="" cols="20" rows="3"></textarea></td>
                             </tr>
                             <tr>
                                 <td bgcolor="#AED6F1 "><strong>Password:</strong></td>
-                                <td><input type="password" id="password" name="password" required></td>
+                                <td><input type="password" id="password" name="password"></td>
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
@@ -125,6 +169,7 @@ if (isset($_GET['success'])) {
                                 </td>
                             </tr>
                         </table>
+                    </form>
                 </fieldset>
             </td>
         </tr>

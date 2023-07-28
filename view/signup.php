@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $msg = '';
 if (isset($_GET['err'])) {
     $err_msg = $_GET['err'];
@@ -60,7 +62,20 @@ if (isset($_GET['err'])) {
             $msg = "Your phone is invalid. Note: DO NOT INCLUDE COUNTRY CODE";
             break;
         }
+        case 'agreementErr': {
+            $msg = "Please check our agreement. :)";
+            break;
+        }
+
+        case 'invalidFileFormat': {
+            $msg = "Invalid File format in profile. Only image are allowed.";
+            break;
+        }
     }
+}
+
+if(isset($_SESSION['logged_in'])){
+    header('location: profile.php');
 }
 
 ?>
@@ -88,7 +103,7 @@ if (isset($_GET['err'])) {
                             <?php if (strlen($msg) > 0) { ?>
                                 <tr align="center">
                                     <td colspan="2">
-                                        <font color="red"><?= $msg ?></font>
+                                        <font color="red"> <?= $msg ?></font>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -137,7 +152,7 @@ if (isset($_GET['err'])) {
                                 <td><font color="red"><sup>*</sup></font>Phone Number:</td>
                                 <td>
                                     <i> <font color="red" size="2">*without country code</font></i> <br>
-                                    <input type="number" id="phone" name="phone">
+                                    <input type="text" id="phone" name="phone">
                                 </td>
                             </tr>
                             <tr>
@@ -183,7 +198,7 @@ if (isset($_GET['err'])) {
                             <tr>
                                 <td>Profile</td>
                                 <td>
-                                    &nbsp; <input type="file" name="profile" accept="image/*">
+                                    &nbsp; <input type="file" name="profile">
                                 </td>
                             </tr>
                             <tr>

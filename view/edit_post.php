@@ -6,11 +6,17 @@ require_once('../model/domainsModel.php');
 if (!isset($_SESSION['logged_in'])) {
   header('location: ../view/signin.php?');
   exit();
-} else if (isset($_POST['edit'])) {
+} 
+else if (isset($_POST['edit'])) {
   $post_id = $_POST['post_id'];
   $post_data = getPost($post_id);
   $domain_name = getDomainName($post_data['domain']);
-} else header('location: ../view/signin.php?');
+} 
+
+else header('location: ../view/signin.php?');
+
+
+$user = $_SESSION['user'];
 
 ?>
 

@@ -23,7 +23,7 @@
 
     function deleteComment($id){
         $con = dbConnection();
-        $sql = "DELETE FROM discussion_comments where post_id='{$id}';";
+        $sql = "DELETE FROM discussion_comments where comment_id='{$id}';";
         if(mysqli_query($con, $sql)){
             return true;
         }

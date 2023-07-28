@@ -5,15 +5,16 @@
     require_once('../controller/validation.php');
 
     
-    $username = $_POST['username'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+    $username = trim($_POST['username']);
+    $first_name = trim($_POST['first_name']);
+    $last_name = trim($_POST['last_name']);
     $email = $_POST['email'];
-    $phone = $_POST['phone'];
+    $phone = trim($_POST['phone']);
     $address = $_POST['address'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $validity = 'unverified';
+    $agreement = $_POST['agreement'];
 
 
     if(!isset($_POST['role'])) {
@@ -85,11 +86,21 @@
         header('location: ../view/signup.php?err=passwordMismatch'); 
         exit();
     }
+    if(!isValidFile($_FILES['profile']['type'], 'image')){
+        header('location: ../view/signup.php?err=invalidFileFormat'); 
+        exit();
+    }
+    if($agreement != 'agreement') {
+        header('location: ../view/signup.php?err=agreementErr'); 
+        exit();
+    }
+
 
 
     
     
     $profile = '';
+
 
     if($_FILES['profile']['size'] > 0){
         $profile = $_FILES['profile']['name'];
