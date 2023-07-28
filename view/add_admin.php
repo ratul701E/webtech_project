@@ -79,6 +79,7 @@ if (isset($_GET['success'])) {
 
 <head>
     <title>Add Admin</title>
+    
 </head>
 
 <body>
