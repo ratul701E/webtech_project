@@ -41,100 +41,151 @@ if (isset($_GET['err'])) {
   <title>Professional Sage | Change Password</title>
   <style>
     /* Reset some default styles for better consistency */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
 
-    /* Navigation bar styles */
-    .navbar {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+/* Top navigation bar styles */
+.top-navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    .navbar a {
-      color: #fff;
-      text-decoration: none;
-      padding: 8px 16px;
-    }
+.top-navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+}
 
-    .navbar a:hover {
-      background-color: #0056b3;
-    }
+.top-navbar a:hover {
+  background-color: #555;
+}
 
-    /* Form container styles */
-    .form-container {
-      max-width: 400px;
-      margin: 50px auto;
-      padding: 20px;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+/* Centering elements */
+.center {
+  text-align: center;
+}
 
-    /* Form header styles */
-    .form-header {
-      text-align: center;
-      font-size: 24px;
-      color: #007bff;
-      margin-bottom: 20px;
-    }
+/* Form container styles */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
 
-    /* Form field styles */
-    .form-field {
-      margin-bottom: 15px;
-    }
+/* Form header styles */
+.form-header {
+  text-align: center;
+  font-size: 24px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
 
-    .form-label {
-      display: block;
-      font-size: 16px;
-      color: #333;
-      margin-bottom: 5px;
-    }
+/* Form field styles */
+.form-field {
+  margin-bottom: 15px;
+}
 
-    .form-input {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      font-size: 14px;
-    }
+.form-label {
+  display: block;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
 
-    /* Error message styles */
-    .error-msg {
-      color: red;
-      font-size: 14px;
-      margin-top: 5px;
-    }
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
 
-    /* Button styles */
-    .form-buttons {
-      text-align: right;
-      margin-top: 20px;
-    }
+/* Error message styles */
+.error-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
 
-    .form-buttons button {
-      background-color: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-left: 10px;
-    }
+/* Button styles */
+.form-buttons {
+  text-align: right;
+  margin-top: 20px;
+}
 
-    .form-buttons button:first-child {
-      background-color: #ccc;
-      color: #333;
-    }
+.form-buttons button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.form-buttons button:first-child {
+  background-color: #ccc;
+  color: #333;
+}
+
+/* Restyled navbar */
+.navbar {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.navbar a:hover {
+  background-color: #0056b3;
+  border-radius: 5px;
+}
+
+.navbar img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.navbar span {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.navbar button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.navbar button:hover {
+  background-color: #555;
+}
 
   </style>
 </head>

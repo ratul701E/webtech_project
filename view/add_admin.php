@@ -79,6 +79,109 @@ if (isset($_GET['success'])) {
 
 <head>
     <title>Add Admin</title>
+    <style>body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Top navigation bar styles (assuming you have a top_navbar.php file) */
+/* Modify these styles according to your design */
+
+.top-navbar {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+.top-navbar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+
+.top-navbar a:hover {
+  background-color: #555;
+}
+
+/* Centering elements */
+
+.center {
+  text-align: center;
+}
+
+/* Form field styles */
+
+fieldset {
+  margin: 20px auto;
+  width: 80%;
+  border: 1px solid #ddd;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+legend {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+select {
+  height: 35px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="submit"],
+input[type="button"] {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: #45a049;
+}
+
+/* Error and success message styles */
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+}
+
+.success-msg {
+  color: green;
+  font-size: 14px;
+}
+</style>
     
 </head>
 
