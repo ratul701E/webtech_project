@@ -121,21 +121,7 @@ if (isset($_GET['success'])) {
       color: red;
     }
 
-    /* Set the color for the "Not a member?" and "Forget Password" links */
-    a {
-      color: cyan;
-      text-decoration: none;
-
-    }
-
-    /* Add underline on hover for links */
-    a:hover {
-      text-decoration: underline;
-      color: red;
-      /* Set the hover color for the links */
-    }
-
-    /* Style the input fields */
+ 
     input[type="text"],
     input[type="password"] {
       width: 200px;
@@ -203,11 +189,11 @@ if (isset($_GET['success'])) {
               <?php } ?>
 
               <tr>
-                <td style="color: skyblue;">Username/Email</td>
+                <td style="color: black;">Username/Email</td>
                 <td><input type="text" name="username" id="username" onkeyup="checkUsername()"></td>
               </tr>
               <tr>
-                <td style="color: skyblue;">Password</td>
+                <td style="color: black;">Password</td>
                 <td><input type="password" name="password" id="password"></td>
               </tr>
               <tr>
@@ -224,11 +210,11 @@ if (isset($_GET['success'])) {
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="color: cyan;">Not a member? <a href="signup.php" style="color: cyan;">Signup here</a></td>
+                <td colspan="2">Not a member? <a href="signup.php">Signup here</a></td>
               </tr>
 
               <tr>
-                <td colspan="2" style="color: cyan;"> <a href="forget_password.php" style="color: cyan;">Forget Password</a></td>
+                <td colspan="2"> <a href="forget_password.php">Forget Password</a></td>
               </tr>
 
             </table>
