@@ -85,6 +85,7 @@ if(isset($_SESSION['logged_in'])){
 <head>
     <title>Professional Sage | Signup</title>
     <link rel="stylesheet" type="text/css" href="signup.css">
+    <script src="../controller/js/signup.js"></script>
 </head>
 
 <body>
@@ -95,14 +96,14 @@ if(isset($_SESSION['logged_in'])){
             <td>
                 <fieldset>
                     <legend align='center'>
-                        <h3 style="color: cyan;">Account Signup</h3> <!-- Added text color cyan -->
+                        <h3 style="color: cyan;">Account Signup</h3> 
                     </legend>
                     <table cellpadding="3" align="center">
                         <form action="../controller/singup_process.php" method="POST" enctype="multipart/form-data">
 
                             <?php if (strlen($msg) > 0) { ?>
                                 <tr align="center">
-                                    <td colspan="2">
+                                    <td colspan="3">
                                         <font color="red"> <?= $msg ?></font>
                                     </td>
                                 </tr>
@@ -121,7 +122,7 @@ if(isset($_SESSION['logged_in'])){
                                                 </label>
                                             </td>
                                             <td>
-                                                <label for="protege">
+                                                <label for="Aspirant">
                                                     <input type="radio" id="Aspirant" name="role" value="Aspirant">
                                                     <img src="../vendor/icons/protege.avif" alt="AspirantImage" width="17">
                                                     Aspirant
@@ -133,7 +134,12 @@ if(isset($_SESSION['logged_in'])){
                             </tr>
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Username</td>
-                                <td><input type="text" id="EnterUsername" name="username"></td>
+                                <td><input type="text" id="EnterUsername" name="username" onkeyup="checkUsernameExist()"></td>
+                                <td>
+                                    <div class="msg">
+                                        <span id="username_msg"></span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>First Name:</td>
@@ -146,7 +152,12 @@ if(isset($_SESSION['logged_in'])){
 
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Email</td>
-                                <td><input type="email" name="email" id=""></td>
+                                <td><input type="email" name="email" id="email" onkeyup="checkEmailExist()"></td>
+                                <td>
+                                    <div class="msg">
+                                        <span id="email_msg"></span>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Phone Number:</td>
@@ -202,7 +213,7 @@ if(isset($_SESSION['logged_in'])){
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <input type="checkbox" value="agreement" name="agreement">
                                     I have read and accepted the Account Agreement
                                 </td>
@@ -211,12 +222,12 @@ if(isset($_SESSION['logged_in'])){
                                 <td><br></td>
                             </tr>
                             <tr>
-                                <td colspan="2" align="center">
+                                <td colspan="3" align="center">
                                     <input type="submit" name="signup" value="Sign Up">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2" align="center">
+                                <td colspan="3" align="center">
                                     Already have an account? <a href="signin.php">Signin</a>
                                 </td>
                             </tr>
