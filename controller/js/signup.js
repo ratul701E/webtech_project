@@ -45,3 +45,35 @@ function checkEmailExist(){
         }
     }
 }
+
+function validate(){
+    let asp = document.getElementById('Aspirant').checked;
+    let prof = document.getElementById('Professional').checked;
+
+    let username = document.getElementById('EnterUsername').value;
+    let first_name = document.getElementById('first-name').value;
+    let last_name = document.getElementById('last-name').value;
+    let email = document.getElementById('email').value;
+    let phone = document.getElementById('phone').value;
+    let address = document.getElementById('address').value;
+    let password = document.getElementById('password').value;
+    let cpassword = document.getElementById('cpassword').value;
+    let agree = document.getElementById('agreement').checked;
+    let err_shower = document.getElementById('empty_err');
+
+    if(!asp && !prof){
+        err_shower.innerHTML = "Role not selected";
+        return false;
+    }
+    else if(username.length < 3){
+        err_shower.innerHTML = "Invalid Username";
+        return false;
+    }
+    else if(first_name.length == 0){
+        err_shower.innerHTML = "Invalid first name";
+        return false;
+    }
+
+    
+    return false;
+}

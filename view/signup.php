@@ -99,7 +99,7 @@ if(isset($_SESSION['logged_in'])){
                         <h3 style="color: cyan;">Account Signup</h3> 
                     </legend>
                     <table cellpadding="3" align="center">
-                        <form action="../controller/singup_process.php" method="POST" enctype="multipart/form-data">
+                        <form action="../controller/singup_process.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 
                             <?php if (strlen($msg) > 0) { ?>
                                 <tr align="center">
@@ -108,6 +108,14 @@ if(isset($_SESSION['logged_in'])){
                                     </td>
                                 </tr>
                             <?php } ?>
+
+                            <tr>
+                                <td>
+                                    <div>
+                                        <span id="empty_err"></span>
+                                    </div>
+                                </td>
+                            </tr>
 
                             <tr>
                                 <td><label for="signup-as"><font color="red"><sup>*</sup></font>Signup As:</label></td>
@@ -169,11 +177,10 @@ if(isset($_SESSION['logged_in'])){
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Gender:</td>
                                 <td>
-                                    <select id="gender" name="gender">
-                                        <option value="">-- Select Gender --</option>
-                                        <option value="male">Male</option>
-                                        <option value="female">Female</option>
-                                        <option value="other">Other</option>
+                                    <select  name="gender">
+                                        <option id="male" value="male">Male</option>
+                                        <option id="female" value="female">Female</option>
+                                        <option id="other" value="other">Other</option>
                                     </select>
                                 </td>
                             </tr>
@@ -181,10 +188,9 @@ if(isset($_SESSION['logged_in'])){
                                 <td><font color="red"><sup>*</sup></font>Country/Region:</td>
                                 <td>
                                     <select id="country" name="country">
-                                        <option value="">-- Select a country --</option>
+                                        <option value="Bangladesh">Bangladesh</option>
                                         <option value="USA">United States of America</option>
                                         <option value="UK">United Kingdom</option>
-                                        <option value="Bangladesh">Bangladesh</option>
                                         <option value="India">India</option>
                                         <option value="China">China</option>
                                     </select>
@@ -193,17 +199,17 @@ if(isset($_SESSION['logged_in'])){
 
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Address</td>
-                                <td><textarea name="address" id="" cols="30" rows="3"></textarea></td>
+                                <td><textarea name="address" id="address" cols="30" rows="3"></textarea></td>
                             </tr>
 
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Password</td>
-                                <td><input type="password" name="password" id=""></td>
+                                <td><input type="password" name="password" id="password"></td>
                             </tr>
 
                             <tr>
                                 <td><font color="red"><sup>*</sup></font>Confirm Password</td>
-                                <td><input type="password" name="cpassword" id=""></td>
+                                <td><input type="password" name="cpassword" id="cpassword"></td>
                             </tr>
 
                             <tr>
@@ -214,7 +220,7 @@ if(isset($_SESSION['logged_in'])){
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <input type="checkbox" value="agreement" name="agreement">
+                                    <input id="agreement" type="checkbox" value="agreement" name="agreement">
                                     I have read and accepted the Account Agreement
                                 </td>
                             </tr>

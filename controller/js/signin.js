@@ -28,6 +28,5 @@ function validate(){
     let username = document.getElementById('username').value;
 
     // no validation needed
-
     return true;
 }
