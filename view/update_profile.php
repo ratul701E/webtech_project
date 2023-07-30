@@ -65,6 +65,87 @@ else $current_user = $_SESSION['user'];
 
 <head>
   <title>Professional Sage | Update Info</title>
+  <style>
+   table {
+      margin: 0 auto;
+    }
+
+    /* Style for fieldset  */
+    fieldset {
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* Style for table rows and cells */
+    tr {
+      vertical-align: top;
+    }
+
+    td {
+      padding: 5px;
+    }
+
+    /* Style for the profile image */
+    img {
+      border: 1px solid #ccc;
+      border-radius: 50%;
+    }
+
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Style for the radio buttons */
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    /* Style for the buttons */
+    input[type="submit"],
+    input[type="button"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    /* Style for the submit button on hover */
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+        color: #1E90FF;
+      
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color:red;
+    }
+
+
+    /* Style for error messages */
+    .error-msg {
+      color: red;
+    }
+</style>
 </head>
 
 <body>
@@ -74,9 +155,7 @@ else $current_user = $_SESSION['user'];
     <tr>
       <td>
         <fieldset>
-          <legend align="center">
-            <h3>Update Profile @<?= $current_user['username'] ?></h3>
-          </legend>
+            <h3  align="center">Update Profile @<?= $current_user['username'] ?></h3>
           <form action="../controller/update_profile_process.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="username" value=<?=$current_user['username']?>>
             <!-- for admin update user -->

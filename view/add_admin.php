@@ -82,119 +82,117 @@ if (isset($_GET['success'])) {
     <script src="../controller/js/add-admin.js"></script>
 
     <style>
-      
+    body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
+        h2 {
+            color: #007bff;
+        }
 
-h2 {
-    color: #007bff;
-}
+        /* Form Styles */
 
-/* Form Styles */
+        fieldset {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-fieldset {
-    background-color: #fff;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        form table {
+            width: 100%;
+        }
 
-form table {
-    width: 100%;
-}
+        form td {
+            padding: 10px;
+        }
 
-form td {
-    padding: 10px;
-}
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"],
+        form textarea,
+        form select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+        }
 
-form input[type="text"],
-form input[type="email"],
-form input[type="password"],
-form textarea,
-form select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-bottom: 12px;
-}
+        form textarea {
+            resize: vertical;
+        }
 
-form textarea {
-    resize: vertical;
-}
+        form select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            padding-right: 20px;
+            background: url("down_arrow.png") no-repeat right center;
+        }
 
-form select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    padding-right: 20px;
-    background: url("down_arrow.png") no-repeat right center;
-}
+        form button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+        
+        }
 
-form button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-   
-}
+        form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        #empty_err {
+                    color: red;
+                }
 
-form button[type="submit"]:hover {
-    background-color: #45a049;
-}
-#empty_err {
+                .error-container {
+                    color: red;
+                    text-align: center;
+                }
+
+
+        .msg {
+            color: red;
+            font-size: 0.9rem;
+        }
+
+
+        i {
+            font-style: italic;
+            font-size: 0.9rem;
             color: red;
         }
 
-        .error-container {
-            color: red;
-            text-align: center;
+        a {
+            color: #1E90FF;
+        
         }
 
+        a:hover {
+            text-decoration: underline;
+            color:red;
+        }
 
-.msg {
-    color: red;
-    font-size: 0.9rem;
-}
+        /* Responsive Styles */
 
-
-i {
-    font-style: italic;
-    font-size: 0.9rem;
-    color: red;
-}
-
-a {
-    color: #1E90FF;
-   
-}
-
-a:hover {
-    text-decoration: underline;
-    color:red;
-}
-
-/* Responsive Styles */
-
-@media (max-width: 600px) {
-    form input[type="text"],
-    form input[type="email"],
-    form input[type="password"],
-    form textarea,
-    form select {
-        width: 100%;
-    }
-}
+        @media (max-width: 600px) {
+            form input[type="text"],
+            form input[type="email"],
+            form input[type="password"],
+            form textarea,
+            form select {
+                width: 100%;
+            }
+        }
 
     </style>
 
