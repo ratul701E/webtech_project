@@ -84,8 +84,74 @@ if(isset($_SESSION['logged_in'])){
 
 <head>
     <title>Professional Sage | Signup</title>
-    <link rel="stylesheet" type="text/css" href="signup.css">
     <script src="../controller/js/signup.js"></script>
+    <style>
+    body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 40%;
+            margin-top: 10px;
+        }
+
+        table td {
+            padding: 8px;
+        }
+
+        fieldset {
+            border: 2px solid #ccc;
+            padding: 20px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #empty_err {
+            color: red;
+        }
+
+        .error-container {
+            color: red;
+            text-align: center;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #1E90FF;
+        }
+
+        .msg {
+            font-size: 12px;
+            color: red;
+        }
+
+
+</style>
 </head>
 
 <body>
@@ -95,9 +161,9 @@ if(isset($_SESSION['logged_in'])){
         <tr>
             <td>
                 <fieldset>
-                    <legend align='center'>
-                        <h3 style="color: cyan;">Account Signup</h3> 
-                    </legend>
+                    
+                        <h1 " align="center">Account Signup</h1> 
+                
                     <table cellpadding="4" align="center">
                         <form action="../controller/singup_process.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 
@@ -112,7 +178,7 @@ if(isset($_SESSION['logged_in'])){
                             <tr>
                                 <td colspan="4" align="center">
                                     <div>
-                                        <span id="empty_err"></span>
+                                        <span id="empty_err" color="red"></span>
                                     </div>
                                 </td>
                             </tr>
