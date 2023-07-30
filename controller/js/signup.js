@@ -156,6 +156,13 @@ function isValidEmail(email){
     if(email.indexOf(".@") != -1) return false;
     if(email.indexOf(" ") != -1) return false;
 
+    let allowedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_@.';
+    for(let i = 0; i < email.length; i++){
+        if(allowedCharacters.indexOf(email[i]) == -1){
+            return false;
+        }
+    }
+
     return true;
     
 }
