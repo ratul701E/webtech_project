@@ -55,8 +55,7 @@ $user = $_SESSION['user'];
 
 if (isset($_GET['username']) and ($user['role'] == 'Admin' or $User['role' == 'SuperAdmin'])) {
   $current_user = getUser($_GET['username']);
-} 
-else $current_user = $_SESSION['user'];
+} else $current_user = $_SESSION['user'];
 
 ?>
 
@@ -65,18 +64,19 @@ else $current_user = $_SESSION['user'];
 
 <head>
   <title>Professional Sage | Update Info</title>
+  <script src="../controller/js/update_profile.js"></script>
   <style>
-   table {
+    table {
       margin: 0 auto;
     }
 
     /* Style for fieldset  */
     fieldset {
-        background-color: #fff;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
 
@@ -131,13 +131,13 @@ else $current_user = $_SESSION['user'];
     }
 
     a {
-        color: #1E90FF;
-      
+      color: #1E90FF;
+
     }
 
     a:hover {
-        text-decoration: underline;
-        color:red;
+      text-decoration: underline;
+      color: red;
     }
 
 
@@ -145,7 +145,7 @@ else $current_user = $_SESSION['user'];
     .error-msg {
       color: red;
     }
-</style>
+  </style>
 </head>
 
 <body>
@@ -155,16 +155,16 @@ else $current_user = $_SESSION['user'];
     <tr>
       <td>
         <fieldset>
-            <h3  align="center">Update Profile @<?= $current_user['username'] ?></h3>
-          <form action="../controller/update_profile_process.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="username" value=<?=$current_user['username']?>>
+          <h3 align="center">Update Profile @<?= $current_user['username'] ?></h3>
+          <form action="../controller/update_profile_process.php" method="post" enctype="multipart/form-data" onsubmit="return validate()">
+            <input type="hidden" name="username" value=<?= $current_user['username'] ?>>
             <!-- for admin update user -->
-            <?php 
-              if(isset($_GET['username'])){
-                ?>
-                  <input type="hidden" name="admin_updating">
-                <?php
-              } 
+            <?php
+            if (isset($_GET['username'])) {
+            ?>
+              <input type="hidden" name="admin_updating">
+            <?php
+            }
             ?>
             <table align="center">
               <tr align="center">
@@ -183,24 +183,37 @@ else $current_user = $_SESSION['user'];
                 </tr>
               <?php } ?>
               <tr>
-                <td><label for="firstname">First Name</label></td>
-                <td><input type="text" id="firstname" name="first_name" value="<?= $current_user['first_name'] ?>" required></td>
+                <td align="center" colspan="2">
+                    <div>
+                      <span id="err_shower"></span>
+                    </div>
+                </td>
               </tr>
               <tr>
+                <td><label for="firstname">First Name</label></td>
+                <td><input type="text" id="firstname" name="first_name" value="<?= $current_user['first_name'] ?>" ></td>
+              </tr
+              <tr>
                 <td><label for="lastname">Last Name</label></td>
-                <td><input type="text" id="lastname" name="last_name" value="<?= $current_user['last_name'] ?>" required></td>
+                <td><input type="text" id="lastname" name="last_name" value="<?= $current_user['last_name'] ?>" ></td>
               </tr>
               <tr>
                 <td><label for="email">Email</label></td>
-                <td><input type="email" id="email" name="email" value="<?= $current_user['email'] ?>" required></td>
+                <td>
+                  <input type="email" id="email" name="email" value="<?= $current_user['email'] ?>" onkeyup="checkEmail()">
+                  <br>
+                  <div>
+                    <span id="email_err"></span>
+                  </div>
+                </td>
               </tr>
               <tr>
                 <td><label for="mobile">Mobile</label></td>
-                <td><input type="tel" id="mobile" name="phone" value="<?= $current_user['phone'] ?>" required></td>
+                <td><input type="tel" id="phone" name="phone" value="<?= $current_user['phone'] ?>" ></td>
               </tr>
               <tr>
                 <td>Address</td>
-                <td><textarea name="address" id="" cols="30" rows="3" required><?= $current_user['address'] ?></textarea></td>
+                <td><textarea name="address" id="address" cols="30" rows="3" required><?= $current_user['address'] ?></textarea></td>
               </tr>
               <tr>
                 <td>Country/Region:</td>
