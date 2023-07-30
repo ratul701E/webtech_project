@@ -66,17 +66,97 @@ function validate(){
         return false;
     }
 
-    let allowedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_';
-    for(let i = 0; i < allowedCharacters.length; i++){
-        //todo
+    else if(!isValidUsername(username)){
+        err_shower.innerHTML = "Invalid Username";
+        return false;
     }
     
-    if(first_name.length == 0){
+    else if(!isValidName(first_name)){
         err_shower.innerHTML = "Invalid first name";
         return false;
     }
 
-    console.log('hi');
+    else if(!isValidName(last_name)){
+        err_shower.innerHTML = "Invalid last name";
+        return false;
+    }
+
+    else if(!isValidEmail(email)){
+        err_shower.innerHTML = "Invalid email address";
+        return false;
+    }
+
+    else if(phone.length != 11){
+        err_shower.innerHTML = "Invalid phone number";
+        return false;
+    }
+
+    else if(address.length < 5){
+        err_shower.innerHTML = "Too small address. Please provide with detials";
+        return false;
+    }
+
+    if(password < 8){
+        err_shower.innerHTML = "Password must be 8 character or more";
+        return false;
+    }
+
+    else if(password != cpassword){
+        err_shower.innerHTML = "Password and confirm password doesnt match";
+        return false;
+    }
+
+    else if(!agree.checked){
+        err_shower.innerHTML = "Please check our agreement to create account.";
+        return false;
+    }
     
-    return false;
+    
+    return true;
 }
+
+function isValidUsername(username){
+    if(username.length < 4) {
+        return false;
+    }
+    let allowedCharacters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_';
+    for(let i = 0; i < username.length; i++){
+        if(allowedCharacters.indexOf(username[i]) == -1){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+function isValidName(name){
+    if(name.length < 3) return false;
+    for(let i = 0; i < name.length; i++){
+        let char = name[i];
+        if(!isAlphabet(char) && char != ' ' && char != '.'){
+            return false;
+        }
+    }
+    return true;
+}
+
+function isAlphabet(character) {
+    const codePoint = character.codePointAt(0);
+    return (codePoint >= 65 && codePoint <= 90) || (codePoint >= 97 && codePoint <= 122);
+}
+
+function isValidEmail(email){
+    let at = email.indexOf('@');
+    let dot = email.indexOf('.');
+
+    if(at == -1 || dot == - 1) return false;
+    if(at == 0 || dot == email.length - 1) return false;
+    if(email.indexOf("..") != -1) return false;
+    if(email.indexOf("@.") != -1) return false;
+    if(email.indexOf(".@") != -1) return false;
+    if(email.indexOf(" ") != -1) return false;
+
+    return true;
+    
+}
+  

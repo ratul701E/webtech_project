@@ -21,9 +21,10 @@ i {
 
 /* Form Styles */
 
+
 table {
     width: 40%;
-    background-color: #23242a;
+    background-color: #252a23;
 }
 
 table td {
@@ -97,10 +98,4 @@ i font.color.cyan {
     color: cyan;
 }
 
-/* Responsive Styles */
 
-@media only screen and (max-width: 500px) {
-    form {
-        width: 90%;
-    }
-}

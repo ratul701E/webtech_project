@@ -98,19 +98,19 @@ if(isset($_SESSION['logged_in'])){
                     <legend align='center'>
                         <h3 style="color: cyan;">Account Signup</h3> 
                     </legend>
-                    <table cellpadding="3" align="center">
+                    <table cellpadding="4" align="center">
                         <form action="../controller/singup_process.php" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
 
                             <?php if (strlen($msg) > 0) { ?>
                                 <tr align="center">
-                                    <td colspan="3">
+                                    <td colspan="4">
                                         <font color="red"> <?= $msg ?></font>
                                     </td>
                                 </tr>
                             <?php } ?>
 
                             <tr>
-                                <td>
+                                <td colspan="4" align="center">
                                     <div>
                                         <span id="empty_err"></span>
                                     </div>
@@ -219,7 +219,7 @@ if(isset($_SESSION['logged_in'])){
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <input id="agreement" type="checkbox" value="agreement" name="agreement">
                                     I have read and accepted the Account Agreement
                                 </td>
@@ -228,12 +228,12 @@ if(isset($_SESSION['logged_in'])){
                                 <td><br></td>
                             </tr>
                             <tr>
-                                <td colspan="3" align="center">
+                                <td colspan="4" align="center">
                                     <input type="submit" name="signup" value="Sign Up">
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" align="center">
+                                <td colspan="4" align="center">
                                     Already have an account? <a href="signin.php">Signin</a>
                                 </td>
                             </tr>
