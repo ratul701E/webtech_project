@@ -16,5 +16,12 @@ else if(isset($_POST['checkEmail'])){
     else echo 'false';
     
 }
+else if(isset($_POST['checkPassword'])){
+    $username = $_POST['username']; 
+    $password = $_POST['password']; 
+    if(login($username,$password)) echo 'true';
+    else echo 'false';
+    
+}
 
 ?>
