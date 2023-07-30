@@ -62,6 +62,7 @@ if (isset($_GET['success'])) {
 
 <head>
     <title>Professional Sage | Discussion</title>
+    <script src="../controller/js/discussion.js"></script>
 </head>
 
 <body>
@@ -97,11 +98,17 @@ if (isset($_GET['success'])) {
                         <legend align="center">
                             <font size="6">Create Post</font>
                         </legend>
+                        <center>
+                            <div>
+                                <span id="post_err"></span>
+                                <br>
+                            </div>
+                        </center>
 
-                        <form action="../controller/discussion_process.php" method="post">
-                            Title: <input type="text" name="title" id=""> <br> <br>
+                        <form action="../controller/discussion_process.php" method="post" onsubmit="return validatePost()">
+                            Title: <input type="text" name="title" id="title"> <br> <br>
                             Body: <br>
-                            <textarea name="body" rows="7" cols="70" placeholder="Write your post here..."></textarea>
+                            <textarea name="body"  id="body" rows="7" cols="70" placeholder="Write your post here..."></textarea>
 
                             <?php
                             $domains = getAllDomains();
@@ -109,7 +116,6 @@ if (isset($_GET['success'])) {
                             <br>
                             <br>
                             <select name="domain_id" id="">
-                                <option value="">-- Select a domain --</option>
                                 <?php
                                 foreach ($domains as $domain) {
                                 ?>

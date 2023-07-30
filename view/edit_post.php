@@ -25,6 +25,7 @@ $user = $_SESSION['user'];
 
 <head>
   <title>Edit Post</title>
+  <script src="../controller/js/edit-post.js"></script>
 </head>
 
 <body>
@@ -36,9 +37,13 @@ $user = $_SESSION['user'];
           <legend align="center">
             <h2>Edit Post</h2>
           </legend>
-          <form action="../controller/edit_post_process.php" method="post">
+          <form action="../controller/edit_post_process.php" method="post" onsubmit="return validate()">
             <input type="hidden" name="post_id" value="<?= $post_id ?>">
-
+            <center>
+              <div>
+                <span id="err"></span>
+              </div>
+            </center>
             <table align="center">
               <tr>
                 <td>Domain</td>
@@ -49,7 +54,6 @@ $user = $_SESSION['user'];
                   <br>
                   <br>
                   <select name="domain_id" id="" required>
-                    <option value="">-- Select a domain --</option>
                     <?php
                     foreach ($domains as $domain) {
                     ?>
