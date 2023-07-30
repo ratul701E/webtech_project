@@ -168,7 +168,7 @@ else $current_user = $_SESSION['user'];
             ?>
             <table align="center">
               <tr align="center">
-                <td colspan="2"><img src="../vendor/profiles/<?= $current_user['profile_location'] ?>" alt="../vendor/profiles/deafult.jpg" width="200"></td>
+                <td colspan="2"><img src="../vendor/profiles/<?= $current_user['profile_location'] ?>" alt="../vendor/profiles/deafult.jpg" width="250" height="250"></td>
               </tr>
               <tr align="center">
                 <td colspan="2">

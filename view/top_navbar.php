@@ -31,7 +31,7 @@
             if (isset($_SESSION['logged_in'])) {                                                                                                                    ?>
                 <td><b>[<?= $user['role'] ?>]</b></td>
                 <td>&nbsp;&nbsp;</td>
-                <td><img src="../vendor/profiles/<?= $user['profile_location'] ?>" alt="" width="30"></td>
+                <td><img src="../vendor/profiles/<?= $user['profile_location'] ?>" alt="" width="25" height="25"></td>
                 <td><?= $user['username'] ?></td>
                 <td>&nbsp;&nbsp;</td>
                 <td><a href="../controller/logout.php"><input type="submit" name="logout" value="Sign Out" id=""></a> </td>
