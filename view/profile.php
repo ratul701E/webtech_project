@@ -31,6 +31,90 @@ if ($username != $_SESSION['username']) {
 
 <head>
     <title>Profile | <?= $user['username'] ?></title>
+    <style>
+    fieldset {
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        /* Center the profile heading */
+    fieldset b[align="center"] {
+        text-align: center;
+        }
+
+        /* Style for the profile image */
+    fieldset img {
+        display: block;
+        margin: 0 auto; /* Center the image horizontally */
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+     }
+
+        /* Style for the profile heading */
+    fieldset h3 {
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+        /* Style for the profile role */
+     fieldset b {
+        color: #444;
+        font-size: 16px;
+    }
+
+        /* Style for the table cell containing bold text */
+    fieldset td b {
+        font-weight: bold;
+    }
+
+        /* Style for hyperlinks */
+    a {
+        color: #1E90FF;
+        text-decoration: none;
+     }
+
+     a:hover {
+        text-decoration: underline;
+        color: red;
+    }
+
+
+        /* Add spacing between table cells */
+     table {
+        border-spacing: 5px;
+    }
+
+        /* Center align the table */
+    table.align-center {
+        margin: 0 auto;
+    }
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    /* Style for the buttons */
+    input[type="submit"],
+    input[type="button"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 10px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    /* Style for the submit button on hover */
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+      background-color: #0056b3;
+    }
+    
+
+</style>
 </head>
 
 <body>
@@ -41,9 +125,9 @@ if ($username != $_SESSION['username']) {
         <tr>
             <td>
                 <fieldset>
-                    <legend align="center">
-                        <b>Profile • @<?= $user['username'] ?> • <?= $user['role'] ?></b>
-                    </legend>
+                  
+                        <b align="center">Profile • @<?= $user['username'] ?> • <?= $user['role'] ?></b>
+                  
 
                     <table align="center">
                         <tr>
