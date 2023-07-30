@@ -41,6 +41,102 @@ if (isset($_POST['search'])) {
 
 <head>
     <title>User Account Management</title>
+    <style>
+    table {
+      margin: 0 auto;
+    }
+
+    /* Style for fieldset  */
+    fieldset {
+        background-color: #fff;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    td font[color="red"] {
+        color: red;
+        font-weight: bold; 
+    }
+
+    td font[color="orange"] {
+        color: orange;
+        font-weight: bold; 
+     }
+
+    td font[color="green"] {
+        color: green;
+        font-weight: bold; 
+    }
+
+    td font[color="#ff8080"] {
+        color: #ff8080;
+        font-weight: bold; 
+    }
+
+    td font[color="#ae7ef1"] {
+        color: #ae7ef1;
+        font-weight: bold; 
+    }
+
+
+    /* Style for buttons inside cells */
+    td input[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    td input[type="submit"]:hover {
+    background-color: #0056b3;
+    }
+
+    input[type="text"][name="search_value"] {
+        padding: 8px;
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"][name="search"],
+    input[type="submit"][name="clear"] {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    input[type="submit"][name="search"]:hover,
+    input[type="submit"][name="clear"]:hover {
+    background-color: #0056b3;
+    }
+
+    select[name="filter"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    a {
+        color: #1E90FF;
+      
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color:red;
+    }
+    .error-msg {
+      color: red;
+    }
+
+</style>
 
 </head>
 
@@ -51,9 +147,7 @@ if (isset($_POST['search'])) {
         <tr>
             <td>
                 <fieldset>
-                    <legend align="center">
-                        <h3>User Account Management</h3>
-                    </legend>
+                        <h3 align="center">User Account Management</h3>
                     <table cellspacing="0" cellpadding="10" align="center">
                         <tr>
                             <td colspan="5" align="center">
