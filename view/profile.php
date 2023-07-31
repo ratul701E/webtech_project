@@ -132,7 +132,7 @@ if ($username != $_SESSION['username']) {
                     <table align="center">
                         <tr>
                             <td colspan="2">
-                                <img src="../vendor/profiles/<?= $user['profile_location'] ?>" alt="" width="200"> <br> <br> <br>
+                                <img src="../vendor/profiles/<?= $user['profile_location'] ?>" alt="" width="250" height="250"> <br> <br> <br>
                                 <fieldset>
                                     <table align="center">
                                         <?php
