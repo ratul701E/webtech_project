@@ -41,6 +41,7 @@ if (isset($_POST['search'])) {
 
 <head>
     <title>User Account Management</title>
+    <script src="../controller/js/manage-user.js"></script>
     <style>
     table {
       margin: 0 auto;
@@ -148,11 +149,11 @@ if (isset($_POST['search'])) {
             <td>
                 <fieldset>
                         <h3 align="center">User Account Management</h3>
-                    <table cellspacing="0" cellpadding="10" align="center">
+                    <table cellspacing="0" cellpadding="10" align="center" id="user-table">
                         <tr>
                             <td colspan="5" align="center">
                                 <form action="" method="post">
-                                    <input type="text" name="search_value" placeholder="Enter username or email" <?php if (isset($_POST['search'])) echo "value='" . $_POST['search_value'] . "'" ?> size=30> &nbsp;
+                                    <input type="text" name="search_value" id="search" onkeyup="update_list()" placeholder="Enter username or email" <?php if (isset($_POST['search'])) echo "value='" . $_POST['search_value'] . "'" ?> size=30> &nbsp;
                                     <input type="submit" name="search" value="Search">
                                     <input type="submit" name="clear" value="Clear">
 

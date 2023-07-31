@@ -35,6 +35,7 @@ if (isset($_POST['search'])) {
 
 <head>
     <title>Discussion Post Management</title>
+    <script src="../controller/js/manage-post.js"></script>
 
 </head>
 
@@ -49,11 +50,11 @@ if (isset($_POST['search'])) {
                         <h3>Discussion Post Management</h3>
                     </legend>
                     <form action="../controller/manage_discussionPost_process.php" method="post">
-                        <table align="center" cellspacing="0" cellpadding="10">
+                        <table align="center" cellspacing="0" cellpadding="10" id="post-table">
                             <tr>
                                 <td colspan="4" align="center">
                                     <form action="" method="post">
-                                        <input type="text" name="search_value" placeholder="Enter post id or author or date posted" <?php if (isset($_POST['search'])) echo "value='" . $_POST['search_value'] . "'" ?> size=30> &nbsp;
+                                        <input type="text" id="search" onkeyup="update_list()" name="search_value" placeholder="Enter post id or author or date posted" <?php if (isset($_POST['search'])) echo "value='" . $_POST['search_value'] . "'" ?> size=30> &nbsp;
                                         <input type="submit" name="search" value="Search">
                                         <input type="submit" name="clear" value="Clear">
                                     </form>
