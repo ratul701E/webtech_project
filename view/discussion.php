@@ -63,6 +63,91 @@ if (isset($_GET['success'])) {
 <head>
     <title>Professional Sage | Discussion</title>
     <script src="../controller/js/discussion.js"></script>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+      
+     
+    }
+
+    th, td {
+       
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    th hr {
+        margin: 5px 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    input[type="text"], input[type="submit"], input[type="button"], textarea {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"], input[type="button"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    input[type="submit"]:hover, input[type="button"]:hover {
+        background-color: #0056b3;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    font[color="red"] {
+        color: red;
+    }
+
+    font[color="green"] {
+        color: green;
+    }
+
+    fieldset {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 20px auto;
+        max-width: 800px;
+    }
+
+    legend {
+        font-weight: bold;
+    }
+</style>
+
 </head>
 
 <body>
