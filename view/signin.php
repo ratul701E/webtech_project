@@ -194,7 +194,7 @@ if (isset($_GET['success'])) {
               </tr>
               <tr>
                 <td style="color: black;">Password</td>
-                <td><input type="password" name="password" id="password"></td>
+                <td><input type="password" name="password" id="password" ></td>
               </tr>
               <tr>
                 <td colspan="2" style="color: red;"><input type="checkbox" name="save" value="yes" checked>Save credentials</td>

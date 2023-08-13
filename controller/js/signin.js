@@ -27,6 +27,10 @@ function validate(){
     let password = document.getElementById('password').value;
     let username = document.getElementById('username').value;
 
-    // no validation needed
+    if(password.length == 0 || username.length == 0){
+        document.getElementById('err_msg').innerHTML = "Field(s) cannot be empty";
+        return false;
+    }
+    
     return true;
 }

@@ -11,12 +11,12 @@ function oldPasswordCheck(){
         if(this.readyState == 4 && this.status == 200){
             if(this.responseText == 'true'){
                 document.getElementById('err').innerHTML = "Old password matched";
-                document.getElementById('err').style.background = green;
+                document.getElementById('err').style.color = "green";
                 
             }
             else{
                 document.getElementById('err').innerHTML = "Old password mismatched";
-                document.getElementById('err').style.color = red;
+                document.getElementById('err').style.color = "red";
             }
         }
     }
@@ -53,10 +53,11 @@ function newPassValidate(){
 
     if(newPassword != confirmNewPassword){
         new_pass_match.innerHTML = "Not matched";
+        new_pass_match.style.color = "red";
     }
     else{
         new_pass_match.innerHTML = "Matched";
-        new_pass_match.style.color = cyan;
+        new_pass_match.style.color = "green";
     }
 
 }

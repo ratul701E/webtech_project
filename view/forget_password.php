@@ -63,6 +63,7 @@ if(isset($_SESSION['logged_in'])){
 
 <head>
     <title>Professional Sage | Forgot Password</title>
+    <script src="../controller/js/forget-password.js"></script>
 </head>
 
 <body>
@@ -74,6 +75,12 @@ if(isset($_SESSION['logged_in'])){
                     <legend align="center">
                         <h3>Forgot Password</h3>
                     </legend>
+
+                    <center>
+                        <div>
+                            <p id="email_err"></p>
+                        </div>
+                    </center>
 
                     <table align="center">
                         <?php if (strlen($msg) > 0) { ?>
@@ -96,7 +103,7 @@ if(isset($_SESSION['logged_in'])){
                             <form action="../controller/get_verification_code.php" method="post">
                                 <div>
                                     <td><label for="email">Email:</label></td>
-                                    <td><input type="email" id="email" name="email" value="<?php if (isset($_SESSION['forget_password_email'])) echo $_SESSION['forget_password_email'] ?>"> &nbsp;</td>
+                                    <td><input type="email" id="email" name="email" value="<?php if (isset($_SESSION['forget_password_email'])) echo $_SESSION['forget_password_email'] ?>" onkeyup="checkEmailExist()"> &nbsp;</td>
                                     <td><input type="submit" value="Get OTP" /></td>
 
                                 </div>

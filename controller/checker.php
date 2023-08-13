@@ -12,7 +12,7 @@ if(isset($_POST['checkUser'])){
 
 else if(isset($_POST['checkEmail'])){
     $email = $_POST['email'];
-    if(isExistUser($email,$email)) echo 'true';
+    if(isExistUser('',$email)) echo 'true';
     else echo 'false';
     
 }
