@@ -1,7 +1,6 @@
 function update_list() {
 
-    //setTimeout(function(){}, 1000);
-
+    
     let search = document.getElementById('search').value;
     let table = document.getElementById('user-table');
 

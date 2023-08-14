@@ -153,7 +153,7 @@ if (isset($_POST['search'])) {
                         <tr>
                             <td colspan="5" align="center">
                                 <form action="" method="post">
-                                    <input type="text" name="search_value" id="search" onkeyup="update_list()" placeholder="Enter username or email" <?php if (isset($_POST['search'])) echo "value='" . $_POST['search_value'] . "'" ?> size=30> &nbsp;
+                                    <input type="text" name="search_value" id="search" onkeypress="setTimeout(update_list, 500)" placeholder="Enter username or email" <?php if (isset($_POST['search'])) echo "value='" . $_POST['search_value'] . "'" ?> size=30> &nbsp;
                                     <input type="submit" name="search" value="Search">
                                     <input type="submit" name="clear" value="Clear">
 
